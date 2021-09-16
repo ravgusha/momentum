@@ -1,3 +1,30 @@
+* {
+    box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li {
+    margin: 0;
+}
+
+:root {
+    --bg-dark: #030303;
+    --dark-red: #710707;
+    --font-gold: #9d8665;
+    --font1: 80px;
+    --font2: 32px;
+    --font3: 28px;
+    --font4: 22px;
+    --font5: 18px;
+}
+
 @font-face {
     font-family: Roboto;
     src: url("assets/fonts/Roboto-Thin.ttf");
@@ -37,11 +64,11 @@
 
 html {
     scroll-behavior: smooth;
+    font-family: Roboto;
 }
 
 .body-container {
     margin: 0 auto;
-    background-color:aqua;
 }
 
 .section {
@@ -56,10 +83,43 @@ html {
     padding-top: 90px;
 }
 
+.homepage {
+    background-color: var(--bg-dark);
+}
+
+.homepage__container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 60px 0;
+
+
+}
+
+.homepage-main {
+    position: relative;
+    z-index: 1;
+}
+
+/* ЧЕРНАЯ ТЕНЬ WELCOME */
+.homepage-main::before { 
+    content: "";
+    background: linear-gradient(to right, black 0%, transparent 100%);
+    position: absolute;
+    height: 800px;
+    width: 900px;
+    left: 397px;
+}
+
 .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    overflow: hidden;
+    padding-bottom: 62px;
+}
+
+.logo-wrapper {
+    display: flex;
 }
 
 .logo {
@@ -75,15 +135,25 @@ html {
 
 .header-title {
     font-family: Forum;
+    letter-spacing: 5px;
+    font-size: 28px;
     color: #fff;
     text-transform: uppercase;
+    padding-left: 25px;
 }
 
 .nav {
-    max-width: 720px;
+    font-family: Roboto;
+    font-weight: 200;
+    font-size: 22px;
+    line-height: 26px;
+    /* identical to box height */
+
+    letter-spacing: 2px;
 }
 
 a {
+    color: #fff !important;
     text-decoration: none;
 }
 
@@ -98,3 +168,151 @@ a {
     line-height: 26px;
 }
 
+.nav-list li:last-child {
+    padding-right: 0;
+}
+
+.nav-tickets {
+    padding-left: 5px;
+}
+
+.homepage-main {
+    display: flex;
+}
+
+.homepage__text {
+    padding-top: 149px;
+    white-space: nowrap;
+    /* pointer-events: none; */
+    z-index: 2;
+}
+
+.title {
+    font-family: Forum;
+    font-weight: 400;
+    font-size: var(--font1);
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+.homepage__subtitle {
+    font-size: var(--font3);
+    color: #fff;
+    font-weight: 300;
+    padding: 25px 0 77px 0;
+    letter-spacing: 2px;
+}
+
+.homepage__button {
+    font-family: Roboto;
+    font-size: var(--font4);
+    font-weight: 300;
+    color: #fff;
+    padding: 24px 66px;
+    background-color: var(--dark-red);
+    border: none;
+    border-radius: 10px;
+    letter-spacing: 2px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/*  Слайдер */
+
+.homepage__slider {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 842px;
+    z-index: -1;
+    right: 158px;
+}
+
+
+.swiper {
+    width: 1000px;
+    height: 100%;
+  }
+
+.swiper-slide {
+     background-position: center;
+        background-size: cover;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+}
+
+
+
+.swiper-pagination {
+    color: #fff;
+}
+
+.swiper-controls {
+    background-color: #000;
+    width: 600px;
+    height: 120px;
+    position: relative;
+    /* top: -38px; */
+    bottom: 180px;
+    z-index: 1;
+    left: 401px;
+    display: flex;
+}
+
+.swiper-button-prev {
+    background-image: url(./assets/svg/←.svg) !important;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center;
+    left: auto !important;
+    right: 128px !important;
+    top: 61px !important;
+}
+
+.swiper-button-prev::after {
+    display: none;
+  }
+
+  .swiper-button-next {
+    background-image: url(./assets/svg/←.svg) !important;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center;
+    transform: rotate(180deg);
+    left: auto !important;
+    right: 77px !important;
+}
+
+
+.swiper-button-next::after {
+    display: none;
+  }
+
+
+  .swiper-pagination-bullet {
+    width: 16px !important;
+    height: 16px !important;
+    border-radius: 0px!important;
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    color: #000;
+    opacity: 1;
+    background:#fff !important;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: #D2B183 !important;
+  }

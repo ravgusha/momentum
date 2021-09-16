@@ -8,57 +8,116 @@
     <title>museum</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="assets/favicon.ico">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 </head>
 
 <body>
     <div class="body-container">
-        <header class="header">
-            <div class="header-container">
-                <div class="logo-wrapper">
-                    <div class="logo"></div>
-                    <h1 class="header-title">Louvre</h1>
+        <div class="homepage">
+            <div class="homepage__container">
+                <header class="header">
+                    <div class="header-container">
+                        <div class="logo-wrapper">
+                            <div class="logo"></div>
+                            <h1 class="header-title">Louvre</h1>
+                        </div>
+                        <nav class="nav">
+                            <ul class="nav-list">
+                                <li class="nav-visiting">
+                                    <a href="#visiting">Visiting</a>
+                                </li>
+                                <li class="nav-explore">
+                                    <a href="#explore">Explore</a>
+                                </li>
+                                <li class="nav-video">
+                                    <a href="#video">Video</a>
+                                </li>
+                                <li class="nav-gallery">
+                                    <a href="#gallery">Gallery</a>
+                                </li>
+                                <li class="nav-tickets">
+                                    <a href="#tickets">Tickets</a>
+                                </li>
+                                <li class="nav-contacts">
+                                    <a href="#contacts">Contacts</a>
+                                </li>
+                            </ul>
+                        </nav>
+                </header>
+                <div class="homepage-main">
+                    <div class="homepage__text">
+                        <h2 class="homepage__title title">Welcome <br>to the louvre</h2>
+                        <p class="homepage__subtitle">From the castle to the museum</p>
+                        <button class="homepage__button">Discover the Louvre</button>
+                    </div>
+                    <div class="homepage__slider">
+                        <div class="swiper mySwiper">
+                            <div class="swiper-wrapper">
+                                <!-- Slides -->
+                                <div class="swiper-slide">
+                                    <img src="./assets/img/welcome-slider/1.jpg">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="./assets/img/welcome-slider/2.jpg">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="./assets/img/welcome-slider/3.jpg">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="./assets/img/welcome-slider/4.jpg">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="./assets/img/welcome-slider/5.jpg">
+                                </div>
+                            </div>
+                            <div class="swiper-controls">
+                                <div class="swiper-pagination"></div>
+                                <div class="swiper-arrows">
+                                    <div class="swiper-button-prev"></div>
+                                    <div class="swiper-button-next"></div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <nav class="nav">
-                    <ul class="nav-list">
-                        <li class="nav-visiting">
-                            <a href="#visiting">Visiting</a>
-                        </li>
-                        <li class="nav-explore">
-                            <a href="#explore">Explore</a>
-                        </li>
-                        <li class="nav-video">
-                            <a href="#video">Video</a>
-                        </li>
-                        <li class="nav-gallery">
-                            <a href="#gallery">Gallery</a>
-                        </li>
-                        <li class="nav-tickets">
-                            <a href="#tickets">Tickets</a>
-                        </li>
-                        <li class="nav-contacts">
-                            <a href="#contacts">Contacts</a>
-                        </li>
-                    </ul>
-                </nav>
-
             </div>
-        </header>
-        <main class="main">
-            <div class="main-container">
-                <section class="section visiting" id="visiting"></section>
-                <section class="section dark-section explore" id="explore"></section>
-                <section class="section video-section video" id="video"></section>
-                <section class="section dark-section gallery" id="gallery"></section>
-                <section class="section tickets" id="tickets"></section>
-                <section class="section contacts" id="contacts"></section>
-            </div>
-        </main>
-        <footer class="footer">
-            <div class="footer-container">
-
-            </div>
-        </footer>
+        </div>
     </div>
+
+    <main class="main">
+        <div class="main-container">
+            <section class="section visiting" id="visiting"></section>
+            <section class="section dark-section explore" id="explore"></section>
+            <section class="section video-section video" id="video"></section>
+            <section class="section dark-section gallery" id="gallery"></section>
+            <section class="section tickets" id="tickets"></section>
+            <section class="section contacts" id="contacts"></section>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer-container">
+
+        </div>
+    </footer>
+    </div>
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            pagination: {
+                el: ".swiper-pagination",
+                // type: "fraction",
+                renderBullet: function (index, className) {
+                    return '<span class="' + className + '">' + "</span>";
+                },
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    </script>
+
 </body>
 
 </html>
