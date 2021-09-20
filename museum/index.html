@@ -8,7 +8,6 @@
     <title>museum</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="assets/favicon.ico">
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 </head>
 
 <body>
@@ -48,35 +47,32 @@
                     <div class="homepage__text">
                         <h2 class="homepage__title title">Welcome <br>to the louvre</h2>
                         <p class="homepage__subtitle">From the castle to the museum</p>
-                        <button class="homepage__button">Discover the Louvre</button>
+                        <a href="https://www.google.com/maps/@48.8618159,2.3366818,3a,75y,81.55h,73.4t/data=!3m7!1e1!3m5!1sAF1QipOVxZQuSy3Bx9T_HpH_7FtBHDTXvI6SF-A10ocT!2e10!3e12!7i5472!8i2736"
+                            class="homepage__button">Discover the Louvre</a>
                     </div>
-                    <div class="homepage__slider">
-                        <div class="swiper mySwiper">
-                            <div class="swiper-wrapper">
-                                <!-- Slides -->
-                                <div class="swiper-slide">
-                                    <img src="./assets/img/welcome-slider/1.jpg">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="./assets/img/welcome-slider/2.jpg">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="./assets/img/welcome-slider/3.jpg">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="./assets/img/welcome-slider/4.jpg">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="./assets/img/welcome-slider/5.jpg">
-                                </div>
+                    <div class="homepage__slider" id="slider">
+                        <div class="slides">
+                            <div class="slide slide-1 active"></div>
+                            <div class="slide slide-2"></div>
+                            <div class="slide slide-3"></div>
+                            <div class="slide slide-4"></div>
+                            <div class="slide slide-5"></div>
+                        </div>
+                        <div class="homepage__pagination">
+                            <div class="counter" id="counter">
+                                <p class="slide-now" id="currentSlide">01</p>
+                                <p class="slide-all">&nbsp |&nbsp 05</p>
                             </div>
-                            <div class="swiper-controls">
-                                <div class="swiper-pagination"></div>
-                                <div class="swiper-arrows">
-                                    <div class="swiper-button-prev"></div>
-                                    <div class="swiper-button-next"></div>
-                                </div>
-
+                            <div class="squares">
+                                <span class="square active" id="square"></span>
+                                <span class="square" id="square"></span>
+                                <span class="square" id="square"></span>
+                                <span class="square" id="square"></span>
+                                <span class="square" id="square"></span>
+                            </div>
+                            <div class="controls">
+                                <button class="btn left" id="prev">&larr;</button>
+                                <button class="btn right" id="next">&rarr;</button>
                             </div>
                         </div>
                     </div>
@@ -98,24 +94,23 @@
     <footer class="footer">
         <div class="footer-container">
 
+            <div>
+                <ol class="container">
+                    <div class="container">
+                        <ol>
+                            <li class="item" id="id-name"><a href=""></a></li>
+                            <li class="item"><a href=""></a></li>
+                            <li class="item"><a href=""></a></li>
+                            <li class="item"><a href=""></a></li>
+                            <li class="item"><a href=""></a></li>
+                        </ol>
+                    </div>
+                </ol>
+            </div>
         </div>
     </footer>
     </div>
-    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-    <script>
-        var swiper = new Swiper(".mySwiper", {
-            pagination: {
-                el: ".swiper-pagination",
-                // type: "fraction",
-                renderBullet: function (index, className) {
-                    return '<span class="' + className + '">' + "</span>";
-                },
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-        });
+    <script src="./script.js">
     </script>
 
 </body>
