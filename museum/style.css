@@ -67,7 +67,7 @@ html {
     font-family: Roboto;
 }
 
-.body-container {
+.body__container {
     margin: 0 auto;
 }
 
@@ -90,7 +90,7 @@ html {
 .homepage__container {
     max-width: 1440px;
     margin: 0 auto;
-    padding: 60px 0;
+    padding: 60px 0 55px 0;
 
 
 }
@@ -201,7 +201,7 @@ a {
     font-size: var(--font3);
     color: #fff;
     font-weight: 300;
-    padding: 25px 0 77px 0;
+    padding: 25px 0 100px 0;
     letter-spacing: 2px;
 }
 
@@ -237,6 +237,7 @@ a {
     z-index: -1;
     right: 158px;
     color: #fff;
+    height: 750px;
 }
 
 
@@ -267,7 +268,7 @@ a {
     background-repeat: no-repeat;
     background-size: cover;
     display: none;
-    animation: zoom-out 3s;
+    transition: all 1.2s ease-in-out;
 }
 
 .slide.active {
@@ -280,7 +281,7 @@ a {
     left: 400px;
     bottom: 61px;
     background-color: #000;
-    padding: 47px 74px;
+    padding: 47px 74px 29px 74px;
 }
 
 .counter {
@@ -314,3 +315,72 @@ a {
     position: relative;
 }
 
+
+/* VISITING BLOCK */
+
+.visiting__container {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.visiting__title {
+    color: var(--font-gold);
+    position: relative;
+    padding-bottom: 107px;
+}
+
+.visiting__title::after {
+    content: "";
+    position: absolute;
+    top: 117px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: var(--dark-red);
+}
+
+.cards {
+    max-width: 1440px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 74px 60px;
+
+
+}
+
+.card__title {
+    font-family: Forum;
+    color: #000;
+    font-size: var(--font2);
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    padding: 22px 0;
+    position: relative;
+}
+
+.card__title::after {
+    content: "";
+    position: absolute;
+    top: 67px;
+    left: 0;
+    width: 68%;
+    height: 3px;
+    background-color: var(--dark-red);
+}
+
+
+.card__subtitle,
+.card__subsubtitle {
+    color: #000;
+    font-weight: 200;
+
+}
+
+.card__subtitle {
+    font-size: var(--font4);
+    padding-bottom: 8px;
+}
+
+.card__subsubtitle {
+    font-size: var(--font5);
+}
