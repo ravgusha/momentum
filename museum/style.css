@@ -344,8 +344,6 @@ a {
     display: flex;
     flex-wrap: wrap;
     gap: 74px 60px;
-
-
 }
 
 .card__title {
@@ -383,4 +381,100 @@ a {
 
 .card__subsubtitle {
     font-size: var(--font5);
+}
+
+/* EXPLORE BLOCK */
+
+.explore__container {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+}
+
+.explore__text {
+    color: #fff;
+    padding-right: 64px;
+}
+
+.explore__title {
+    position: relative;
+    padding-bottom: 104.5px;
+}
+
+.explore__title::after {
+    content: "";
+    position: absolute;
+    top: 113px;
+    left: 0;
+    width: 100, 5%;
+    height: 3px;
+    background-color: var(--dark-red);
+}
+
+.explore__paragraph {
+    font-size: var(--font4);
+    font-weight: 300;
+    line-height: 37.5px;
+}
+
+.explore__paragraph_two {
+    padding: 28px 0;
+}
+
+.explore__text_span {
+    color: var(--font-gold);
+}
+
+/* ДО-ПОСЛЕ СЛАЙДЕР */
+
+.img-comp-container {
+    position: relative;
+    height: 700px;
+    /*should be the same height as the images*/
+    padding-top: 14px;
+}
+
+.img-comp-img {
+    position: absolute;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+}
+
+.img-comp-img img {
+    display: block;
+    vertical-align: middle;
+
+}
+
+.img-comp-slider {
+    position: absolute;
+    z-index: 9;
+    cursor: ew-resize;
+    /*set the appearance of the slider:*/
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: transparent;
+    border: 4px solid white;
+}
+
+.img-comp-slider::before {
+    content: "";
+    position: absolute;
+    top: -332px;
+    left: 14px;
+    width: 4px;
+    height: 328px;
+    background-color: #fff;
+}
+
+.img-comp-slider::after {
+    content: "";
+    position: absolute;
+    top: 36px;
+    left: 14px;
+    width: 4px;
+    height: 331px;
+    background-color: #fff;
 }
