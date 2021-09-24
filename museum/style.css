@@ -718,3 +718,35 @@ a {
     color: #999999;
     padding: 0;
 }
+
+
+/* GALLERY BLOCK */
+.gallery__title {
+    padding-bottom: 75px;
+}
+
+.gallery__container {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.gallery__picture {
+    max-width: 1440px;
+    overflow: hidden;
+}
+
+.gallery__picture_container {
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    display: flex;
+    gap: 36px 10px;
+    height: 1850px;
+}
+
+
+.gallery__image {
+    flex: 1 1 33%;
+    height: max-content;
+    max-width: 456px;
+    flex-grow: 1;
+}
