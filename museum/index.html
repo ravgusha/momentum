@@ -253,8 +253,50 @@
                         </div>
                     </div>
                 </section>
-                <section class="section dark-section gallery" id="gallery"></section>
-                <section class="section tickets" id="tickets"></section>
+                <section class="section dark-section gallery" id="gallery">
+                    <div class="gallery__container">
+                        <h2 class="gallery__title title">Art gallery</h2>
+                        <div class="gallery__picture">
+                            <div class="gallery__picture_container">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="section tickets" id="tickets">
+                    <div class="tickets__container">
+                        <h2 class="tickets__title title">Buy tickets</h2>
+                        <div class="tickets__main">
+                            <img class="ticket__image" src="./assets/img/tickets.jpg" alt="painting">
+                            <div class="tickets__input_container">
+                                <div class="ticket__type">
+                                    <h4 class="ticket__type_title">Ticket Type</h4>
+                                    <form class="ticket__form">
+                                        <input type="radio" name="type" value="permanent" checked
+                                            class="input">Permanent
+                                        exhibition<br>
+                                        <input type="radio" name="type" value="temporary" class="input">Temporary
+                                        exhibition<br>
+                                        <input type="radio" name="type" value="combined" class="input">Combined
+                                        Admission
+                                    </form>
+                                </div>
+                                <div class="ticket__amount">
+                                    <h4 class="ticket__type_title">Amount</h4>
+                                    <p class="input__basic">Basic 18+</p>
+                                    <button class="input__minus" id="minus">–</button>
+                                    <input type="number" step="1" placeholder=" 1" id="input-bas" min="1">
+                                    <button class="input__plus" id="plus">+</button>
+                                    <p class="input__senior">Seniot 65+</p>
+                                    <button class="input__minus" id="minus1">–</button>
+                                    <input type="number" step="1" placeholder="1" id="input-sen">
+                                    <button class="input__plus" id="plus1">+</button>
+                                    <p class="input__total">Total €220</p>
+                                    <button class="input__button">Buy now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
                 <section class="section contacts" id="contacts"></section>
             </div>
         </main>
@@ -263,7 +305,8 @@
             </div>
         </footer>
     </div>
-    <script src="./script.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/gallery.js"></script>
 </body>
 
 </html>

@@ -147,3 +147,44 @@ document.getElementById("progressInput").oninput = function() {
   this.style.background = 'linear-gradient(to right, #710707 0%, #710707 ' + value + '%, #fff ' + value + '%, white 100%)'
 };
 
+// BUT TICKETS INPUT COUNTER
+
+const minusButton = document.getElementById('minus');
+const plusButton = document.getElementById('plus');
+const inputField = document.getElementById('input-bas');
+
+minusButton.addEventListener('click', event => {
+  event.preventDefault();
+  const currentValue = Number(inputField.value) || 0;
+  inputField.value = currentValue - 1;
+  if (inputField.value < 0) inputField.value = 0;
+});
+
+plusButton.addEventListener('click', event => {
+  event.preventDefault();
+  const currentValue = Number(inputField.value) || 0;
+  inputField.value = currentValue + 1;
+  if (inputField.value > 100) inputField.value = 100;
+});
+
+
+
+
+
+const minusButton1 = document.getElementById('minus1');
+const plusButton1 = document.getElementById('plus1');
+const inputField1 = document.getElementById('input-sen');
+
+minusButton1.addEventListener('click', event => {
+  event.preventDefault();
+  const currentValue = Number(inputField1.value) || 0;
+  inputField1.value = currentValue - 1;
+  if (inputField1.value < 0) inputField1.value = 0;
+});
+
+plusButton1.addEventListener('click', event => {
+  event.preventDefault();
+  const currentValue = Number(inputField1.value) || 0;
+  inputField1.value = currentValue + 1;
+  if (inputField1.value > 100) inputField1.value = 100;
+});
