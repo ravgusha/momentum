@@ -8,7 +8,8 @@
     <title>museum</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="assets/favicon.ico">
-    <link type="text/css" href="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.css">
+    <link type="text/css" href="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.css"
+        property='stylesheet'>
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
@@ -16,77 +17,75 @@
 
 <body>
     <div class="body__container">
-        <div class="homepage">
-            <div class="homepage__container">
-                <header class="header">
-                    <div class="header-container">
-                        <div class="logo-wrapper">
-                            <div class="logo"></div>
-                            <h1 class="header-title">Louvre</h1>
-                        </div>
-                        <nav class="nav">
-                            <ul class="nav-list">
-                                <li class="nav-visiting">
-                                    <a href="#visiting">Visiting</a>
-                                </li>
-                                <li class="nav-explore">
-                                    <a href="#explore">Explore</a>
-                                </li>
-                                <li class="nav-video">
-                                    <a href="#video">Video</a>
-                                </li>
-                                <li class="nav-gallery">
-                                    <a href="#gallery">Gallery</a>
-                                </li>
-                                <li class="nav-tickets">
-                                    <a href="#tickets">Tickets</a>
-                                </li>
-                                <li class="nav-contacts">
-                                    <a href="#contacts">Contacts</a>
-                                </li>
-                            </ul>
-                        </nav>
-                </header>
-                <div class="homepage-main">
-                    <div class="homepage__text">
-                        <h2 class="homepage__title title">Welcome <br>to the louvre</h2>
-                        <p class="homepage__subtitle">From the castle to the museum</p>
-                        <a target="_blank"
-                            href="https://www.google.com/maps/@48.8618159,2.3366818,3a,75y,81.55h,73.4t/data=!3m7!1e1!3m5!1sAF1QipOVxZQuSy3Bx9T_HpH_7FtBHDTXvI6SF-A10ocT!2e10!3e12!7i5472!8i2736"
-                            class="homepage__button">Discover the Louvre</a>
-                    </div>
-                    <div class="homepage__slider" id="slider">
-                        <div class="slides">
-                            <div class="slide slide-1 active"></div>
-                            <div class="slide slide-2"></div>
-                            <div class="slide slide-3"></div>
-                            <div class="slide slide-4"></div>
-                            <div class="slide slide-5"></div>
-                        </div>
-                        <div class="homepage__pagination">
-                            <div class="counter" id="counter">
-                                <p class="slide-now" id="currentSlide">01</p>
-                                <p class="slide-all">&nbsp |&nbsp 05</p>
-                            </div>
-                            <div class="squares" id="squares">
-                                <span class="square active" id="square" data-index=0></span>
-                                <span class="square" id="square" data-index=1></span>
-                                <span class="square" id="square" data-index=2></span>
-                                <span class="square" id="square" data-index=3></span>
-                                <span class="square" id="square" data-index=4></span>
-                            </div>
-                            <div class="controls">
-                                <button class="btn left" id="prev">&larr;</button>
-                                <button class="btn right" id="next">&rarr;</button>
-                            </div>
-                        </div>
-                    </div>
+        <header class="header">
+            <div class="header__container">
+                <div class="logo-wrapper">
+                    <div class="logo"></div>
+                    <h1 class="header-title">Louvre</h1>
                 </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li class="nav-visiting">
+                            <a href="#visiting">Visiting</a>
+                        </li>
+                        <li class="nav-explore">
+                            <a href="#explore">Explore</a>
+                        </li>
+                        <li class="nav-video">
+                            <a href="#video">Video</a>
+                        </li>
+                        <li class="nav-gallery">
+                            <a href="#gallery">Gallery</a>
+                        </li>
+                        <li class="nav-tickets">
+                            <a href="#tickets">Tickets</a>
+                        </li>
+                        <li class="nav-contacts">
+                            <a href="#contacts">Contacts</a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
-        </div>
-
+        </header>
         <main class="main">
             <div class="main-container">
+                <section class="welcome section dark-section">
+                    <div class="welcome__container">
+                        <div class="welcome__text">
+                            <h2 class="welcome__title title">Welcome <br>to the louvre</h2>
+                            <p class="welcome__subtitle">From the castle to the museum</p>
+                            <a target="_blank"
+                                href="https://www.google.com/maps/@48.8618159,2.3366818,3a,75y,81.55h,73.4t/data=!3m7!1e1!3m5!1sAF1QipOVxZQuSy3Bx9T_HpH_7FtBHDTXvI6SF-A10ocT!2e10!3e12!7i5472!8i2736"
+                                class="welcome__button">Discover the Louvre</a>
+                        </div>
+                        <div class="welcome__slider" id="slider">
+                            <div class="slides">
+                                <div class="slide slide-1 active"></div>
+                                <div class="slide slide-2"></div>
+                                <div class="slide slide-3"></div>
+                                <div class="slide slide-4"></div>
+                                <div class="slide slide-5"></div>
+                            </div>
+                            <div class="welcome__pagination">
+                                <div class="counter" id="counter">
+                                    <p class="slide-now" id="currentSlide">01</p>
+                                    <p class="slide-all">&nbsp; |&nbsp; 05</p>
+                                </div>
+                                <div class="squares" id="squares">
+                                    <span class="square active" id="square" data-index=0></span>
+                                    <span class="square" data-index=1></span>
+                                    <span class="square" data-index=2></span>
+                                    <span class="square" data-index=3></span>
+                                    <span class="square" data-index=4></span>
+                                </div>
+                                <div class="controls">
+                                    <button class="btn left" id="prev">&larr;</button>
+                                    <button class="btn right" id="next">&rarr;</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
                 <section class="section visiting" id="visiting">
                     <div class="visiting__container">
                         <h2 class="visiting__title title">Virtual tour</h2>
@@ -164,10 +163,12 @@
                         </div>
                         <div class="img-comp-container">
                             <div class="img-comp-img">
-                                <img src="./assets/img/explore-slider/before.jpg" width="720" height="700">
+                                <img src="./assets/img/explore-slider/before.jpg" width="720" height="700"
+                                    alt="Before image">
                             </div>
                             <div class="img-comp-img img-comp-overlay">
-                                <img src="./assets/img/explore-slider/after.jpg" width="720" height="700">
+                                <img src="./assets/img/explore-slider/after.jpg" width="720" height="700"
+                                    alt="After image">
                             </div>
                         </div>
                     </div>
@@ -181,31 +182,76 @@
                         </div>
                         <div class="video-player__container">
                             <div class="player">
-                                <video class="player__video viewer" src="./assets/video/video0.mp4" width="1440"
-                                    height="650"></video>
-                                <i class="player__playbackCircle"></i>
-                                <div class="player__controls player__controls--visible">
-                                    <div class="player__controls-holder player__element">
-                                        <button class="player__button togglePlayback" title="Toggle Play">
-                                            <i class="player__playbackIcon"></i></button>
-                                    </div>
-                                    <div class="progress player__element">
-                                        <div class="progress__filled"></div>
-                                    </div>
-                                    <div class="player__controls-holder">
-                                        <button class="player__button player__volume"> 
-                                            <i class="player__volumeIcon player__element"></i>
+                                <img class="player__image" src="./assets/video/poster0.jpg" width="1440" height="650"
+                                    alt="Player image">
+                                <button class="player__play-circle">
+                                    <i class="player__play-circle_icon"></i>
+                                </button>
+
+                                <div class="player__controls">
+                                    <div class="controls-container player__element">
+                                        <button class="player__button">
+                                            <i class="player__play-icon"></i>
                                         </button>
-                                        <input type="range" name="volume" class="player__slider playerVolume player__element" min="0"
-                                            max="1" step="0.05" value="1">
-                                        <button class="player__button toggleFullscreen player__element" title="Toggle Play">⛶</button>
+                                    </div>
+                                    <input type="range" class="progress player__element" id="progressInput" min="0"
+                                        max="1" step="0.05" value="1">
+                                    <div class="controls-container">
+                                        <button class="player__volume player__button ">
+                                            <i class="player__volume_icon player__element"></i>
+                                        </button>
+                                        <input type="range" name="volume" class="player__slider volume player__element"
+                                            min="0" max="1" step="0.05" value="1" id="volumeInput">
+                                        <button class="fullscreen player__element player__button">⛶</button>
                                     </div>
                                 </div>
                             </div>
+                            <div class="player__slider" id="playerSlider">
+                                <div class="player__slides">
+                                    <div class="player__slide player__slide-1 active">
+                                        <iframe width="452" height="254" loading="lazy"
+                                            src="https://www.youtube.com/embed/aWmJ5DgyWPI?modestbranding=1"
+                                            poster="./assets/video/poster1.jpg" title="YouTube video player"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen>
+                                        </iframe>
+                                    </div>
+                                    <div class="player__slide player__slide-2">
+                                        <iframe width="452" height="254" loading="lazy"
+                                            src="https://www.youtube.com/embed/Vi5D6FKhRmo?controls=0?modestbranding=1"
+                                            poster="./assets/video/poster2.jpg" title="YouTube video player"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen>
+                                        </iframe>
+                                    </div>
+                                    <div class="player__slide player__slide-3">
+                                        <iframe width="452" height="254" loading="lazy"
+                                            src="https://www.youtube.com/embed/NOhDysLnTvY?controls=0?modestbranding=1"
+                                            poster="./assets/video/poster3.jpg" title="YouTube video player"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen>
+                                        </iframe>
+                                    </div>
+                                </div>
+                                <div class="player__slider_pagination">
+                                    <button class="player__slider_button">
+                                        <i class="fa fa-angle-double-left"></i>
+                                    </button>
+                                    <span class="dot active" data-index=0></span>
+                                    <span class="dot" data-index=1></span>
+                                    <span class="dot" data-index=2></span>
+                                    <span class="dot" data-index=3></span>
+                                    <span class="dot" data-index=4></span>
+                                    <button class="player__slider_button slider-right">
+                                        <i class="fa fa-angle-double-right "></i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-
                     </div>
-
                 </section>
                 <section class="section dark-section gallery" id="gallery"></section>
                 <section class="section tickets" id="tickets"></section>
@@ -214,20 +260,6 @@
         </main>
         <footer class="footer">
             <div class="footer-container">
-
-                <div>
-                    <ol class="container">
-                        <div class="container">
-                            <ol>
-                                <li class="item" id="id-name"><a href=""></a></li>
-                                <li class="item"><a href=""></a></li>
-                                <li class="item"><a href=""></a></li>
-                                <li class="item"><a href=""></a></li>
-                                <li class="item"><a href=""></a></li>
-                            </ol>
-                        </div>
-                    </ol>
-                </div>
             </div>
         </footer>
     </div>
