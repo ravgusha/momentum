@@ -187,3 +187,17 @@ plusButton1.addEventListener('click', event => {
   inputField1.value = currentValue + 1;
   if (inputField1.value > 100) inputField1.value = 100;
 });
+
+
+// POP-UP 
+
+const clickBtn = document.getElementById("clickBtn");
+const popup = document.getElementById("popup");
+const closeBtn = document.getElementById("closeBtn");
+
+clickBtn.addEventListener('click', ()=>{
+    popup.style.display = 'block';
+});
+closeBtn.addEventListener('click', ()=>{
+    popup.style.display = 'none';
+});

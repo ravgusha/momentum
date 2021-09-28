@@ -295,19 +295,44 @@
                                         <button class="input__plus" id="plus1"></button>
                                     </div>
                                     <p class="input__total">Total €220</p>
-                                    <button class="input__button">Buy now</button>
+                                    <button class="input__button" id="clickBtn">Buy Now</button>
+
+                                    <div id="popup">
+                                        <div class="popup-container">
+                                            <div class="close-popup" id="closeBtn"><a href="##"></a></div>
+
+                                            <div class="popup__main">
+                                                <div class="popup__left">
+                                                    <div class="popup__logo"></div>
+                                                    <h2 class="popup__title">Booking tickets</h2>
+                                                    <h4 class="popup__subtitle">Tour to Louvre</h4>
+                                                    <form action="">
+                                                        <input type="date" class="popup__date" value="Date">
+                                                        <input type="time" class="popup__time">
+                                                        <input type="text" class="popup__name">
+                                                        <input type="email" class="popup__email">
+                                                        <input type="phone" class="popup__phone">
+                                                        <select name="" id="" class="popup__type"></select>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="popup-right">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </section>
-                <section class="section contacts" id="contacts"></section>
             </div>
-        </main>
-        <footer class="footer">
-            <div class="footer-container">
-            </div>
-        </footer>
+            </section>
+            <section class="section contacts" id="contacts"></section>
+    </div>
+    </main>
+    <footer class="footer">
+        <div class="footer-container">
+        </div>
+    </footer>
     </div>
     <script src="./js/script.js"></script>
     <script src="./js/gallery.js"></script>
