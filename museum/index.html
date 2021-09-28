@@ -306,27 +306,96 @@
                                                     <div class="popup__logo"></div>
                                                     <h2 class="popup__title">Booking tickets</h2>
                                                     <h4 class="popup__subtitle">Tour to Louvre</h4>
-                                                    <form action="">
-                                                        <input type="date" class="popup__date" value="Date">
-                                                        <input type="time" class="popup__time">
-                                                        <input type="text" class="popup__name">
-                                                        <input type="email" class="popup__email">
-                                                        <input type="phone" class="popup__phone">
-                                                        <select name="" id="" class="popup__type"></select>
+                                                    <form class="popup__form">
+                                                        <input type="date" class="popup__date" placeholder="Date">
+                                                        <input type="time" class="popup__time" placeholder="Time">
+                                                        <input type="text" class="popup__name" placeholder="Name">
+                                                        <input type="email" class="popup__email" placeholder="E-mail">
+                                                        <input type="phone" class="popup__phone" placeholder="Phone">
+                                                        <select name="" id="" class="popup__type">
+                                                            <option value="" class="popup__option" disabled selected>
+                                                                Ticket Type
+                                                            </option>
+                                                            <option>Permanent exhibition</option>
+                                                            <option>Temporary exhibition</option>
+                                                            <option>Combined exhibition</option>
+                                                        </select>
+                                                        <i class="pseudo"></i>
                                                     </form>
+                                                    <div class="popup__total">
+                                                        <h4 class="total__entry">Entry Ticket</h4>
+                                                        <div class="total__basic">
+                                                            <p class="total__basic_text">Basic 18+ (20 €)</p>
+                                                            <div class="total__basic_input">
+                                                                <button class="basic__minus" id="basicMinus"></button>
+                                                                <input class="basic__input" type="number" step="1"
+                                                                    placeholder=" 2" id="basicInput" min="1">
+                                                                <button class="basic__plus" id="basicPlus"></button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="total__senior">
+                                                            <p class="total__senior_text">Senior 65+ (10 €)</p>
+                                                            <div class="total__senior_input">
+                                                                <button class="senior__minus" id="seniorMinus"></button>
+                                                                <input class="senior__input" type="number" step="1"
+                                                                    placeholder=" 2" id="totalInput" min="1">
+                                                                <button class="senior__plus" id="seniorPlus"></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="popup-right">
+                                                    <div class="payment__top">
+                                                        <div class="payment__text">
+                                                            <h2 class="payment__title">Overview</h2>
+                                                            <h4 class="payment__subtitle">Tour to Louvre</h4>
+                                                            <p class="payment__date">Friday, August 19</p>
+                                                            <p class="payment__time">16 : 30</p>
+                                                            <p class="payment__type">Temporary exhibition</p>
+                                                        </div>
+                                                        <div class="payment__image">
+                                                            <img src="./assets/img/payment.jpg" alt="Louvre"
+                                                                class="payment__img">
+                                                        </div>
+                                                    </div>
+                                                    <div class="payment__amount">
+                                                        <div class="payment__amount_one">
+                                                            <div class="payment__amount_left">
+                                                                <span class="payment__number">2</span>
+                                                                <p class="payment__total">Basic (20 €)</p>
+                                                            </div>
+                                                            <p class="payment__sum">40 €</p>
+
+                                                        </div>
+                                                        <div class="payment__amount_two">
+                                                            <div class="payment__amount_left left">
+                                                                <span class="payment__number">2</span>
+                                                                <p class="payment__total">Senior (10 €)</p>
+                                                            </div>
+                                                            <p class="payment__sum sum-left">20 €</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="payment__bottom">
+                                                        <div class="total__sum">
+                                                            <p class="total__text">Total:</p>
+                                                            <p class="total__number">60 €</p>
+                                                        </div>
+                                                    </div>
+
                                                 </div>
                                             </div>
-                                            <div class="popup-right">
-                                            </div>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
             </div>
-            </section>
-            <section class="section contacts" id="contacts"></section>
+    </div>
+    </div>
+    </section>
+    <section class="section contacts" id="contacts"></section>
     </div>
     </main>
     <footer class="footer">

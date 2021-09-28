@@ -1040,6 +1040,10 @@ input[type="number"] {
     display: inline-block;
 }
 
+.popup__form {
+    position: relative;
+}
+
 .popup {
     background-color: #ffffff;
     padding: 20px 30px;
@@ -1133,14 +1137,412 @@ input[type="number"] {
     height: 3px;
     background-color: var(--dark-red);
 }
+
 .popup__left {
     max-width: 400px;
+    margin-right: 40px;
 }
 
-input.popup__date::-webkit-calendar-picker-indicator { display: none }
+input[type=date]::-webkit-calendar-picker-indicator {
+    background: url(./assets/svg/arrow.svg);
+    background-repeat: no-repeat;
+    position: relative;
+    right: 1px;
+    top: 3px;
+}
 
-input.popup__date::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+.popup__date {
+    font-family: Roboto;
+    width: 190px;
+    height: 45px;
+    background-image: url(./assets/svg/date.svg);
+    background-repeat: no-repeat;
+    font-size: 18px;
+    color: black;
+    padding: 14px;
+    background-position: 14px 13px;
+    padding-left: 43px;
+    margin-left: 0px;
+    opacity: 1;
+    border: 1px solid #030303;
+    margin-right: 17px;
+}
 
+input[type="date"]:before {
+    content: attr(placeholder) !important;
+    color: #aaa;
+    margin-right: 0.5em;
+    width: 138px;
+}
+
+input[type="date"]:focus:before,
+input[type="date"]:valid:before {
+    content: "";
+}
+
+.popup__time {
+    font-family: Roboto;
+    width: 189px;
+    height: 45px;
+    background-image: url(./assets/svg/time.svg);
+    background-repeat: no-repeat;
+    font-size: 18px;
+    color: black;
+    padding-left: 43px;
+    background-position: 14px 13px;
+    margin-left: 0px;
+    opacity: 1;
+    border: 1px solid #030303;
+    padding-right: 10px;
+}
+
+input[type="time"]:before {
+    content: attr(placeholder) !important;
+    color: #aaa;
+    margin-right: 0.5em;
+    width: 138px;
+}
+
+input[type="time"]:focus:before,
+input[type="date"]:valid:before {
+    content: "";
+}
+
+input[type=time]::-webkit-calendar-picker-indicator {
+    background: url(./assets/svg/arrow.svg);
+    background-repeat: no-repeat;
+    position: relative;
+    right: 1px;
+    top: 3px;
+}
+
+.popup__name {
+    font-family: Roboto;
+    width: 400px;
+    height: 45px;
+    background-image: url(./assets/svg/name.svg);
+    background-repeat: no-repeat;
+    font-size: 18px;
+    color: black;
+    padding-left: 43px;
+    background-position: 14px 13px;
+    margin-left: 0px;
+    opacity: 1;
+    border: 1px solid #030303;
+    margin-right: 17px;
+    margin: 20px 0;
+}
+
+.popup__email {
+    font-family: Roboto;
+    width: 400px;
+    height: 45px;
+    background-image: url(./assets/svg/email.svg);
+    background-repeat: no-repeat;
+    font-size: 18px;
+    color: black;
+    padding-left: 43px;
+    background-position: 14px 16px;
+    opacity: 1;
+    border: 1px solid #030303;
+    margin: 0 0 20px;
+}
+
+input::-webkit-input-placeholder {
+    color: black; /*Change the placeholder color*/
+    opacity: 1;
+}
+
+
+.popup__phone {
+    font-family: Roboto;
+    width: 400px;
+    height: 45px;
+    background-image: url(./assets/svg/tel.svg);
+    background-repeat: no-repeat;
+    font-size: 18px;
+    color: black;
+    padding-left: 43px;
+    background-position: 14px 10px;
+    opacity: 1;
+    border: 1px solid #030303;
+    margin: 0 0 20px;
+}
+
+.popup__type {
+    font-family: Roboto;
+    width: 400px;
+    height: 45px;
+    background-image: url(./assets/svg/arrow.svg);
+    background-repeat: no-repeat;
+    font-size: 18px;
+    color: black;
+    background-position: 367px 14px;
+    opacity: 1;
+    border: 1px solid #030303;
+    margin: 0 0 20px;
+    padding-left: 44px;
+    appearance: none;
+}
+
+.popup__option {
+    font-family: Roboto;
+}
+
+
+.pseudo {
+    content: "";
+    display: inline-block;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-image: url(./assets/svg/type.svg);
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    left: 15px;
+    bottom: 34px;
+    padding-left: 44px;
+}
+
+.popup__total {
+    border: 1px solid black;
+    padding: 10px 15px;
+}
+.total__entry {
+    color: var(--font-gold);
+    padding-bottom: 22px;
+    font-weight: 400;
+}
+
+.total__basic {
+    position: relative;
+}
+.total__basic::before{
+    content: "";
+    position: absolute;
+    bottom: 58px;
+    left: -1px;
+    width: 100%;
+    height: 3px;
+    background-color: var(--dark-red);
+}
+
+.total__basic_text,
+.total__senior_text {
+    padding-top: 4px;
+    font-size: 18px;
+}
+
+.total__senior_text {
+    padding-bottom: 5px;
+    padding-top: 1px;
+}
+
+.total__basic,
+.total__senior {
+    display: flex;
+    justify-content: space-between;
+}
+
+.total__basic {
+    justify-content: space-between;
+    padding-bottom: 18px;
+}
+
+.basic__input,
+.senior__input {
+    width: 35px;
+}
+
+.basic__minus,
+.basic__plus,
+.senior__minus,
+.senior__plus {
+    font-size: 21px;
+    height: 25px;
+    width: 34px;
+    background-color: black;
     color: white;
-  
-  }
+    border: none;
+    outline: none;
+}
+
+
+
+.total__basic_input,
+.total__senior_input {
+    display: inline-flex;
+}
+
+.total__basic_input button
+.total__senior_input button {
+    outline: none;
+    -webkit-appearance: none;
+    background-color: transparent;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    cursor: pointer;
+    margin: 0;
+    position: relative;
+    padding: 0;
+    background: black;
+}
+
+.total__basic_input button:before,
+.total__basic_input button:after,
+.total__senior_input button:before,
+.total__senior_input button:after {
+    display: inline-block;
+    position: absolute;
+    content: '';
+    width: 11px;
+    height: 2px;
+    background-color: #fff;
+    transform: translate(-50%, -96%);
+}
+
+.total__basic_input button.basic__plus:after,
+.total__senior_input button.senior__plus:after {
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.total__basic_input input[type=number],
+.total__senior_input input[type=number] {
+    font-family: Roboto;
+    max-width: 4.5rem;
+    padding: .5rem;
+    text-align: center;
+    outline: none;
+    height: 25px;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.popup-right {
+    border: 1px solid black;
+    padding: 25px 27px 27px 30px;
+}
+
+.payment__top {
+    display: flex;
+    width: 470px;
+    justify-content: space-between;
+}
+
+.payment__title {
+    font-size: 32px;
+    padding-bottom: 2px;
+}
+
+.payment__subtitle {
+    font-size: 22px;
+    color: var(--dark-red);
+}
+
+.payment__date,
+.payment__time,
+.payment__type {
+    position: relative;
+    font-size: 18px;
+    padding-top: 9px;
+    padding-left: 30px;
+}
+
+.payment__time {
+    padding-top: 6px;
+}
+
+.payment__type {
+    padding-top: 3px;
+}
+
+.payment__date::before {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: url(./assets/svg/date.svg);
+    left: 0;
+    bottom: 4px;
+}
+
+.payment__time::before {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: url(./assets/svg/time.svg);
+    left: 0;
+    bottom: 5px;
+}
+
+.payment__type::before {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: url(./assets/svg/done.svg);
+    left: 0;
+    bottom: 3px;
+}
+
+.payment__amount {
+    position: relative;
+}
+
+.payment__amount_left,
+.payment__amount_right {
+    display: flex;
+    padding-top: 23px;
+}
+.payment__number {
+    font-size: 18px;
+    color: #A4A4A3;
+    background-color: black;
+    border-radius: 19%;
+    padding: 0px 11px;
+    height: fit-content;
+    margin-right: 10px;
+}
+
+.payment__total {
+    font-size: 22px;
+    margin-right: 10px;
+}
+
+.payment__amount_one,
+.payment__amount_two {
+    display: flex;
+    justify-content: space-between;
+}
+
+.payment__sum {
+    padding-top: 23px;
+    font-size: 22px;
+}
+
+.left,
+.sum-left {
+    padding-top: 5px;
+}
+
+.payment__amount::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    width: 100%;
+    height: 3px;
+    background-color: var(--dark-red);
+}
+
+.total__sum {
+    display: flex;
+    justify-content: space-between;
+}
+
+.payment__bottom {
+    padding-top: 17px;
+    font-size: 32px;
+}
