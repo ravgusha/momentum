@@ -25,7 +25,7 @@ function shuffle(array) {
 shuffle(paths);
 
 let result = paths.map(currentValue => `<img class="gallery__image" ${currentValue} alt="gallery">`)
-let result2 = result.toString().replace(/\\"/g,'"');
+let result2 = result.toString().replace(/\\"/g,'"').replace(/,/g,' ');
 
 pictureInnerContainer.innerHTML = result2;
 
