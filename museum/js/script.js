@@ -1,4 +1,3 @@
-
 let slide = document.getElementsByClassName("slide");
 let prevBtn = document.getElementById("prev");
 let nextBtn = document.getElementById("next");

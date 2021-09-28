@@ -796,7 +796,12 @@ a {
 }
 
 
+
+
 /* TICKETS BLOCK */
+
+
+
 
 .tickets__container {
     max-width: 1440px;
@@ -825,6 +830,11 @@ a {
 
 .ticket__image {
     padding-right: 60px;
+}
+
+.ticket__type {
+    margin-right: 261px;
+    width: max-content;
 }
 
 .ticket__type_title {
@@ -904,21 +914,81 @@ input[type='radio']:checked::after {
 .input__senior {
     font-size: 22px;
     font-weight: 300;
+    padding-bottom: 12px;
 }
 
-input[type='number'] {
+.input__senior {
+    padding-top: 10px;
+    padding-bottom: 14px;
+}
+
+.ticket__amount_title {
+    text-align: end;
+    font-size: 28px;
+    padding-bottom: 27px;
+}
+
+/* TICKET INPUT STYLING */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
-    width: 150px;
-    height: 50px;
-    border: solid 1px black;
-    border-left: none;
-    border-right: none;
 }
 
-.input__minus {
-    border: solid 1px black;
-    height: 50px;
-    border-right: none;
-    background: transparent;
-    font-size: 25px;
+input[type="number"] {
+    -webkit-appearance: textfield;
+    appearance: textfield;
+}
+
+.number-input {
+    border: 2px solid #ddd;
+    display: inline-flex;
+}
+
+.number-input,
+.number-input * {
+    box-sizing: border-box;
+}
+
+.number-input button {
+    outline:none;
+    -webkit-appearance: none;
+    background-color: transparent;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    cursor: pointer;
+    margin: 0;
+    position: relative;
+    padding:0;
+}
+
+.number-input button:before,
+.number-input button:after {
+    display: inline-block;
+    position: absolute;
+    content: '';
+    width: 17px;
+    height: 2px;
+    background-color: #212121;
+    transform: translate(-50%, -50%);
+}
+.number-input button.input__plus:after {
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.number-input input[type=number] {
+    font-family: Roboto;
+    max-width: 4.5rem;
+    padding: .5rem;
+    border:0;
+    text-align: center;
+    outline:none;
+    height: 44px;
+    font-size: 22px;
+    font-weight: 300;
+}
+.number-input{
+    border: solid #000;
+    border-width:3px;
 }
