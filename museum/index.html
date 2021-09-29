@@ -297,8 +297,8 @@
                                     <p class="input__total">Total €220</p>
                                     <button class="input__button" id="clickBtn">Buy Now</button>
 
-                                    <div id="popup">
-                                        <div class="popup-container">
+                                    <div id="popup" class="popup">
+                                        <div class="popup-container" id="popupCont">
                                             <div class="close-popup" id="closeBtn"><a href="##"></a></div>
 
                                             <div class="popup__main">
@@ -380,6 +380,44 @@
                                                             <p class="total__text">Total:</p>
                                                             <p class="total__number">60 €</p>
                                                         </div>
+                                                    </div>
+                                                    <div class="credit__card">
+                                                        <div class="card__back">
+                                                            <div class="card__black"></div>
+                                                            <p class="card__cvc">CVC/CVV</p>
+                                                            <input class="cvc__input" type="number">
+                                                            <p class="card__last">The last<br>3 or 4 digits<br>on back<br>of the
+                                                                card</p>
+                                                        </div>
+                                                        <div class="card__front">
+                                                            <div class="card__front_top">
+                                                                <div class="card__numbers">
+                                                                    <p class="card__number">Card number</p>
+                                                                    <input type="number" class="card__number_input">
+                                                                    <p class="card__date">Expiration date</p>
+                                                                    <select class="card__month">
+                                                                        <option>03</option>
+                                                                    </select>
+                                                                    <select class="card__year">
+                                                                        <option>2024</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="card__images">
+                                                                    <img class="card__visa" src="./assets/svg/visa.svg"
+                                                                        alt="visa">
+                                                                    <img class="card__mastercard"
+                                                                        src="./assets/svg/mastercard.svg"
+                                                                        alt="master card">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="card__name">
+                                                                <p class="card__name_text">Cardholder name</p>
+                                                                <input type="text" class="card__name_input">
+                                                            </div>
+                                                        </div>
+
+                                                        <button class="book__button">Book</button>
                                                     </div>
 
                                                 </div>

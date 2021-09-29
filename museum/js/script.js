@@ -136,13 +136,13 @@ function initComparisons() {
 initComparisons();
 
 // COLORING VOLUME INPUT 
-document.getElementById("volumeInput").oninput = function() {
-  var value = (this.value-this.min)/(this.max-this.min)*100
+document.getElementById("volumeInput").oninput = function () {
+  var value = (this.value - this.min) / (this.max - this.min) * 100
   this.style.background = 'linear-gradient(to right, #710707 0%, #710707 ' + value + '%, #fff ' + value + '%, white 100%)'
 };
 
-document.getElementById("progressInput").oninput = function() {
-  var value = (this.value-this.min)/(this.max-this.min)*100
+document.getElementById("progressInput").oninput = function () {
+  var value = (this.value - this.min) / (this.max - this.min) * 100
   this.style.background = 'linear-gradient(to right, #710707 0%, #710707 ' + value + '%, #fff ' + value + '%, white 100%)'
 };
 
@@ -195,9 +195,15 @@ const clickBtn = document.getElementById("clickBtn");
 const popup = document.getElementById("popup");
 const closeBtn = document.getElementById("closeBtn");
 
-clickBtn.addEventListener('click', ()=>{
-    popup.style.display = 'block';
+clickBtn.addEventListener('click', () => {
+  popup.style.left = '0';
 });
-closeBtn.addEventListener('click', ()=>{
-    popup.style.display = 'none';
+closeBtn.addEventListener('click', () => {
+  popup.style.left = '-3000px';
 });
+
+window.onclick = function(event) {
+  if (event.target == popup) {
+    popup.style.left = '-3000px';
+  }
+}
