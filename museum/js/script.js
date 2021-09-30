@@ -48,7 +48,7 @@ function navigateSlider() {
   showCurrentSlide();
 }
 
-// СЛАЙДЕР ДО-ПОСЛЕ
+// BEFPRE_AFTER SLIDER
 function initComparisons() {
   var x, i;
   /* Find all elements with an "overlay" class: */
@@ -66,7 +66,7 @@ function initComparisons() {
     w = img.offsetWidth;
     h = img.offsetHeight;
     /* Set the width of the img element to 50%: */
-    img.style.width = (w / 2) + "px";
+    img.style.width = (w / 1.65) + "px";
     /* Create slider: */
     slider = document.createElement("DIV");
     slider.setAttribute("class", "img-comp-slider");
@@ -74,7 +74,7 @@ function initComparisons() {
     img.parentElement.insertBefore(slider, img);
     /* Position the slider in the middle: */
     slider.style.top = (h / 1.93) - (slider.offsetHeight / 2) + "px";
-    slider.style.left = (w / 2) - (slider.offsetWidth / 2) + "px";
+    slider.style.left = (w / 1.65) - (slider.offsetWidth / 2) + "px";
     /* Execute a function when the mouse button is pressed: */
     slider.addEventListener("mousedown", slideReady);
     /* And another function when the mouse button is released: */
@@ -199,11 +199,11 @@ clickBtn.addEventListener('click', () => {
   popup.style.left = '0';
 });
 closeBtn.addEventListener('click', () => {
-  popup.style.left = '-3000px';
+  popup.style.left = '-6000px';
 });
 
-window.onclick = function(event) {
+window.onclick = function (event) {
   if (event.target == popup) {
-    popup.style.left = '-3000px';
+    popup.style.left = '-6000px';
   }
 }
