@@ -243,11 +243,15 @@ a {
     position: relative;
     margin: 0;
     padding: 0;
-    width: 842px;
+    width: 1000px;
     z-index: -1;
     right: 11%;
     color: #fff;
     max-height: 750px;
+}
+
+.slides {
+    width: 1000px;
 }
 
 .slide-1 {
@@ -271,7 +275,7 @@ a {
 }
 
 .slide {
-    width: 119%;
+    width: 100%;
     height: 750px;
     background-position: center;
     background-repeat: no-repeat;
@@ -293,7 +297,7 @@ a {
     padding: 47px 74px 29px 74px;
     width: fit-content;
     white-space: nowrap;
-    right: -161px;
+    right: 0;
 }
 
 .counter {
@@ -303,7 +307,7 @@ a {
 
 .squares {
     display: flex;
-    padding: 5px 29px 0 55px;
+    padding: 5px 25px 0 55px;
 }
 
 .square {
@@ -575,7 +579,7 @@ a {
 .player__controls {
     display: flex;
     flex-wrap: wrap;
-    background: rgba(0, 0, 0, 0.8);
+    background-color: #000;
     z-index: 20;
     height: 85px;
     align-items: center;
@@ -595,6 +599,7 @@ a {
     left: 42%;
     width: 220px;
     height: 220px;
+    background-size: contain;
 }
 
 .player__play-circle:hover {
@@ -1078,7 +1083,8 @@ input[type="number"] {
     position: relative;
     top: 50px;
     left: -250px;
-    display: inline-block;
+    left: 50%;
+transform: translateX(-50%);
 }
 
 .popup__form {
@@ -1097,9 +1103,8 @@ input[type="number"] {
     padding: 30px 30px 0 0;
     background-image: url(./assets/svg/close.svg);
     background-repeat: no-repeat;
-    margin-top: 30px;
-    margin-left: auto;
-    margin-right: 27px;
+    margin-top: 0;
+    margin-left: 183px;
     width: 27px;
     height: 27px;
 }
@@ -1181,6 +1186,7 @@ input[type="number"] {
 .popup__left {
     max-width: 400px;
     margin-right: 40px;
+    margin-top: 60px;
 }
 
 input[type=date]::-webkit-calendar-picker-indicator {
@@ -1486,6 +1492,7 @@ input::-webkit-input-placeholder {
 }
 
 .popup-right {
+    margin-top: 60px;
     border: 1px solid black;
     padding: 25px 27px 27px 30px;
 }
@@ -1994,9 +2001,9 @@ footer {
         padding: 55px 0 57px 20px;
     }
 
-    .welcome__slider {
+    /* .welcome__slider {
         right: 8%;
-    }
+    } */
 
     .counter {
         font-size: 20px;
@@ -2011,12 +2018,12 @@ footer {
         padding: 0 0 121px 0;
     }
 
-    .welcome__pagination {
+    /* .welcome__pagination {
         right: -64px;
-    }
+    } */
 
-    .slide {
-        width: 113%
+    .slides {
+        width: 116%;
     }
 
     .visiting__title {
@@ -2070,6 +2077,62 @@ footer {
     .player {
         max-width: 984px;
         margin: 0 auto;
+        height: auto;
+    }
+
+    .player__slides {
+        justify-content: center;
+    }
+
+    .player__image {
+        height: 444px;
+        width: -webkit-fill-available;
+    }
+
+    .player__play-circle {
+        width: 152px;
+        height: 152px;
+        top: 28%;
+    }
+
+    .player__controls {
+        height: 60px;
+    }
+
+    .player__play-icon {
+        padding-right: 44px;
+    }
+
+    .progress {
+        width: 61%;
+        margin-right: 33px;
+    }
+
+    .player__volume_icon {
+        width: 26px;
+        height: 22px;
+        background-size: cover;
+    }
+
+    .volume {
+        margin-left: 29px;
+        width: 146px;
+    }
+
+    .fullscreen {
+        width: 26px;
+        height: 26px;
+        background-size: contain;
+        margin-left: 26px;
+    }
+
+    .player__slide iframe {
+        width: 300px;
+        height: 170px;
+    }
+
+    .section.gallery {
+        padding-right: 20px;
     }
 }
 
@@ -2320,5 +2383,53 @@ footer {
 
     }
 
+    .video-section {
+        padding-top: 52px;
+        padding-bottom: 61px;
+    }
+
+    .video__text {
+        padding-bottom: 31px;
+    }
+
+    .video__subtitle {
+        display: none;
+    }
+
+    .player {
+        margin: 0;
+    }
+
+    .player__slides {
+        justify-content: start;
+    }
+
+    .player__controls {
+        padding: 0 39px;
+    }
+
+    .progress {
+        width: 62%;
+    }
+
+    .player__slider_pagination {
+        padding-right: 19px;
+        padding-top: 3px;
+    }
+
+    .gallery__title {
+        padding-bottom: 49px;
+    }
+
+    .gallery__picture {
+        height: 1262px;
+    }
+
+    
+
+    .gallery__image {
+        width: 31%;
+        margin-bottom: 3%;
+    }
 
 }
