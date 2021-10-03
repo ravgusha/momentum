@@ -12,7 +12,6 @@
         property='stylesheet'>
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
 </head>
 
 <body>
@@ -23,35 +22,43 @@
                     <div class="logo"></div>
                     <h1 class="header__title">Louvre</h1>
                 </div>
-                <nav class="nav">
-                    <ul class="nav-list">
-                        <li class="nav__item">
+
+                <nav class="nav hamburger-menu" id="hamnav">
+                    <input id="menu__toggle" type="checkbox" />
+                    <label class="menu__btn" for="menu__toggle">
+                      <span></span>
+                    </label>
+                
+                    <ul class="nav__list menu__box" id="hamitems">
+                        <li class="nav__item menu__item">
                             <a href="#visiting">Visiting</a>
                         </li>
-                        <li class="nav__item">
+                        <li class="nav__item menu__item">
                             <a href="#explore">Explore</a>
                         </li>
-                        <li class="nav__item">
+                        <li class="nav__item menu__item">
                             <a href="#video">Video</a>
                         </li>
-                        <li class="nav__item">
+                        <li class="nav__item menu__item">
                             <a href="#gallery">Gallery</a>
                         </li>
-                        <li class="nav__item">
+                        <li class="nav__item menu__item">
                             <a href="#tickets">Tickets</a>
                         </li>
-                        <li class="nav__item">
+                        <li class="nav__item menu__item">
                             <a href="#contacts">Contacts</a>
                         </li>
                     </ul>
                 </nav>
+
+
             </div>
         </header>
         <main class="main">
             <div class="main-container">
                 <section class="welcome section dark-section">
                     <div class="welcome__container">
-                        <div class="welcome__text">
+                        <div class="welcome__text" id="welcomeText">
                             <h2 class="welcome__title title">Welcome <br>to the louvre</h2>
                             <p class="welcome__subtitle">From the castle to the museum</p>
                             <a target="_blank" href="panoramas/1.html" class="welcome__button">Discover the Louvre</a>
@@ -139,13 +146,13 @@
                             <h2 class="explore__title title">Picture explore</h2>
                             <p class="explore__paragraph explore__paragraph_one">Las Meninas is a 1656 painting by Diego
                                 Velázquez,
-                                the leading<br> artist of the Spanish Golden Age.</p>
+                                the leading artist of the Spanish Golden Age.</p>
                             <p class="explore__paragraph explore__paragraph_two">It was cleaned in 1984 to remove a
                                 <span class="explore__text_span">"yellow veil"</span> of
-                                dust that had<br> gathered since the previous restoration in the 19th century.</p>
+                                dust that had gathered since the previous restoration in the 19th century.</p>
                             <p class="explore__paragraph explore__paragraph_three">The cleaning provoked furious
                                 protests, not because
-                                the picture had<br> been damaged in any way, but because it looked different.</p>
+                                the picture had been damaged in any way, but because it looked different.</p>
                         </div>
                         <div class="img-comp-container">
                             <div class="img-comp-img">
@@ -242,9 +249,12 @@
                                 <div class="ticket__type">
                                     <h4 class="ticket__type_title">Ticket Type</h4>
                                     <form class="ticket__form">
-                                        <label class="label"><input type="radio" name="type" value="permanent" checked class="input">Permanent exhibition<br></label>
-                                        <label><input type="radio" name="type" value="temporary" class="input">Temporary exhibition<br></label>
-                                        <label><input type="radio" name="type" value="combined" class="input">Combined Admission</label> 
+                                        <label class="label"><input type="radio" name="type" value="permanent" checked
+                                                class="input">Permanent exhibition<br></label>
+                                        <label><input type="radio" name="type" value="temporary" class="input">Temporary
+                                            exhibition<br></label>
+                                        <label><input type="radio" name="type" value="combined" class="input">Combined
+                                            Admission</label>
                                     </form>
                                 </div>
                                 <div class="ticket__amount">

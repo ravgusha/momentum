@@ -48,7 +48,7 @@ function navigateSlider() {
   showCurrentSlide();
 }
 
-// BEFPRE_AFTER SLIDER
+// BEFORE_AFTER SLIDER
 function initComparisons() {
   var x, i;
   /* Find all elements with an "overlay" class: */
@@ -207,3 +207,13 @@ window.onclick = function (event) {
     popup.style.left = '-6000px';
   }
 }
+
+
+// BURGER MENU 
+
+let burger = document.getElementById("menu__toggle");
+let text = document.getElementById("welcomeText");
+
+burger.addEventListener('click', () => {
+  text.classList.toggle('active');
+})
