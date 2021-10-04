@@ -26,9 +26,9 @@
                 <nav class="nav hamburger-menu" id="hamnav">
                     <input id="menu__toggle" type="checkbox" />
                     <label class="menu__btn" for="menu__toggle">
-                      <span></span>
+                        <span></span>
                     </label>
-                
+
                     <ul class="nav__list menu__box" id="hamitems">
                         <li class="nav__item menu__item">
                             <a href="#visiting">Visiting</a>
@@ -244,7 +244,9 @@
                     <div class="tickets__container">
                         <h2 class="tickets__title title">Buy tickets</h2>
                         <div class="tickets__main">
-                            <img class="ticket__image" src="./assets/img/tickets.jpg" alt="painting">
+                            <div class="ticket__images">
+                                <img class="ticket__image" src="./assets/img/tickets.jpg" alt="painting">
+                            </div>
                             <div class="tickets__input_container">
                                 <div class="ticket__type">
                                     <h4 class="ticket__type_title">Ticket Type</h4>
@@ -262,20 +264,22 @@
                                     <p class="input__basic">Basic 18+</p>
                                     <div class="number-input">
                                         <button class="input__minus" id="minus"></button>
-                                        <input type="number" step="1" placeholder=" 1" id="input-bas" min="1" max="20">
+                                        <input type="number" step="1" placeholder=" 1" id="input-bas" min="1" max="20"
+                                            class="ticket__input">
                                         <button class="input__plus" id="plus"></button>
                                     </div>
                                     <p class="input__senior">Senior 65+</p>
                                     <div class="number-input">
                                         <button class="input__minus" id="minus1"></button>
-                                        <input type="number" step="1" placeholder="1" id="input-sen" min="1" max="20">
+                                        <input type="number" step="1" placeholder="1" id="input-sen" min="1" max="20"
+                                            class="ticket__input">
                                         <button class="input__plus" id="plus1"></button>
                                     </div>
                                     <p class="input__total">Total €220</p>
                                     <button class="input__button" id="clickBtn">Buy Now</button>
                                     <div id="popup" class="popup">
                                         <div class="popup-container" id="popupCont">
-                                            
+
                                             <div class="popup__main">
                                                 <div class="popup__left">
                                                     <div class="popup__logo"></div>
@@ -404,9 +408,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="parallax">
-                    </div>
+
                 </section>
+                <div class="parallax">
+                </div>
                 <section class="section contacts" id="contacts">
                     <div class="contacts__container">
                         <h2 class="contacts__title title">Contacts</h2>
@@ -420,7 +425,7 @@
                                         class="contacts__email_a">mail: info@louvre.fr</a></p>
                             </div>
                             <div class="contacts__map">
-                                <img src="./assets/img/map.jpg" alt="map">
+                                <img class="contacts__map_image" src="./assets/img/map.jpg" alt="map">
                             </div>
                         </div>
                     </div>

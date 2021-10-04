@@ -213,7 +213,13 @@ window.onclick = function (event) {
 
 let burger = document.getElementById("menu__toggle");
 let text = document.getElementById("welcomeText");
+let slider = document.getElementById('slider');
 
 burger.addEventListener('click', () => {
-  text.classList.toggle('active');
+  if (window.innerWidth < 1020) {
+    slider.classList.toggle('active');
+    text.classList.toggle('active');
+  } else {
+    text.classList.toggle('active');
+  }
 })
