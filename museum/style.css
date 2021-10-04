@@ -178,6 +178,34 @@ a {
     padding-left: 5px;
 }
 
+.nav__images {
+    display: none;
+}
+
+.nav__images.active {
+    display: block;
+    padding-top: 57%;
+    left: -25%;
+    position: relative;
+    padding-bottom: 27px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+
+
+.nav__image2 {
+    padding-right: 10px;
+    padding-top: 13px;
+}
+
+.header__soc {
+    display: none;
+}
+
+.header__soc.active {
+    display: flex;
+    padding-top: 35px;
+}
 
 /* WELCOME SECTION */
 
@@ -587,6 +615,7 @@ a {
     z-index: 20;
     height: 85px;
     align-items: center;
+    flex-wrap: nowrap;
 }
 
 .controls-container {
@@ -1915,17 +1944,14 @@ footer {
     font-weight: 200;
     font-size: 22px;
     line-height: 26px;
-    /* identical to box height */
-
     letter-spacing: 2px;
-
     padding-bottom: 25px;
-
 }
 
 
 
-.footer__soc_item {
+.footer__soc_item,
+.header__soc_item {
     display: block;
     width: 48px;
     height: 48px;
@@ -1963,7 +1989,8 @@ footer {
     padding-top: 78px;
 }
 
-.footer__soc_list {
+.footer__soc_list,
+.header__soc_list {
     display: flex;
 }
 
@@ -2321,6 +2348,11 @@ footer {
         margin-right: 41px;
     }
 
+    .menu__btn.active {
+        left: 76%;
+        position: relative;
+    }
+
     .menu__btn>span,
     .menu__btn>span::before,
     .menu__btn>span::after {
@@ -2487,6 +2519,14 @@ footer {
         width: 62%;
     }
 
+
+    .progress.active {
+        position: absolute;
+        bottom: 53px;
+        width: 100%;
+        left: 0;
+    }
+
     .player__slider_pagination {
         padding-right: 19px;
         padding-top: 3px;
@@ -2513,13 +2553,13 @@ footer {
     }
 
     .ticket__images {
-        width: 700px;
+        width: 345%;
         max-height: 440px;
         margin-right: 81px;
     }
 
     .ticket__image {
-        width: inherit;
+        width: 100%;
     }
 
     .number-input button {
@@ -2532,7 +2572,9 @@ footer {
     }
 
     .ticket__input {
-        padding: 0.5rem 2.8rem !important;
+        max-width: 5.5rem;
+        padding: 0.5rem 1.8rem !important;
+        max-width: 5.5rem !important;
     }
 
 
@@ -2611,13 +2653,22 @@ footer {
     }
 
     .cards {
-        gap: 40px 56px;
-        margin: 0px 56px;
+        gap: 40px 3%;
     }
 
     .card__image {
         max-width: 280px;
         max-height: 180px;
+    }
+
+    .section {
+        padding: 40px 20px;
+    }
+
+    .title {
+        font-size: 40px;
+        line-height: 60px;
+        padding-bottom: 63px;
     }
 
     .welcome {
@@ -2627,8 +2678,13 @@ footer {
     .welcome__title {
         font-size: 40px;
         line-height: 60px;
-
+        padding-bottom: 0;
     }
+
+    .visiting__title::after {
+        top: 80px;
+    }
+
 
     .welcome__subtitle {
         font-size: 20px;
@@ -2679,5 +2735,249 @@ footer {
     #menu__toggle:checked~.menu__box {
         padding: 59px 0 0 0px;
         height: 42%;
+    }
+
+    .logo-wrapper.active {
+        top: -462px;
+        position: relative;
+        padding-top: 61px;
+        z-index: 4;
+    }
+
+    .header__soc_list {
+        padding-left: 0;
+    }
+
+    .card__title {
+        font-size: 22px;
+        line-height: 24px;
+    }
+
+    .card__title::after {
+        top: 54px;
+        width: 53%;
+    }
+
+    .card__subtitle {
+        font-weight: 200;
+        font-size: 18px;
+        line-height: 21px
+    }
+
+    .section.visiting {
+        padding-bottom: 83px;
+    }
+
+    .explore__title::after {
+        top: 80px;
+    }
+
+    .explore__paragraph {
+        display: none;
+    }
+
+    .img-comp-container {
+        padding: 0;
+        margin: 0;
+        padding-top: 15px;
+    }
+
+    .explore__title {
+        padding-bottom: 51px;
+    }
+
+    .section.explore {
+        padding-bottom: 58px;
+    }
+
+
+
+
+
+}
+
+@media (max-width: 768px) {
+    .cards {
+        gap: 40px 56px;
+        margin: 0px 56px;
+    }
+
+    .visiting__title {
+        padding-bottom: 62px;
+    }
+
+    .video__title {
+        padding: 0;
+    }
+
+    .video__text {
+        padding-bottom: 20px;
+    }
+
+    .player__image {
+        height: 329px;
+        max-width: 728px;
+    }
+
+    .player__controls {
+        max-width: 728px;
+    }
+
+    .player {
+        max-width: 728px;
+    }
+
+    .progress.player__element {
+        position: absolute;
+        bottom: 53px;
+        width: 97%;
+        left: -2px;
+    }
+
+    .player__controls {
+        padding: 0 30px;
+    }
+
+    .player__play-icon {
+        padding-right: 53px;
+    }
+
+    .volume {
+        width: 75%;
+    }
+
+    .player__slide iframe {
+        width: 354px;
+        height: 199px;
+    }
+
+    .player__slides {
+        padding: 17px 0 15px 0;
+        column-gap: 20px;
+        overflow: hidden;
+    }
+
+    .video-section {
+        padding-bottom: 79px;
+    }
+
+    .player__play-circle {
+        width: 80px;
+        height: 80px;
+        top: 32%;
+        left: 43%;
+    }
+
+    .gallery__picture_container::after,
+    .gallery__picture_container::before {
+        display: none;
+    }
+
+    .gallery__image {
+        width: 48.5%;
+        order: 2;
+    }
+
+    .gallery__image:nth-child(-n+7) {
+        order: 1;
+    }
+
+    .gallery__image:nth-child(n+8) {
+        order: 2;
+    }
+
+    .gallery__image:nth-child(3) {
+        padding-top: 0;
+    }
+
+
+    .gallery__picture_container {
+        align-content: space-between;
+        height: 3520px;
+    }
+
+    .gallery__title {
+        padding-bottom: 40px;
+    }
+
+    .gallery__picture {
+        height: 1078px;
+
+    }
+
+    .ticket__images {
+        width: 258%;
+        height: 100%;
+        margin-right: 59px;
+    }
+
+    .tickets__title::after {
+        top: 79px;
+    }
+
+    .ticket__amount {
+        PADDING-RIGHT: 50PX;
+    }
+
+    .ticket__amount_title {
+        padding-bottom: 36px;
+    }
+
+    .input__total {
+        padding: 33px 0 39px;
+    }
+
+    .parallax {
+        height: 300px;
+        background-size: contain;
+    }
+
+    .contacts__title::after {
+        top: 64px;
+    }
+
+    .contacts__main {
+        display: block;
+        padding-top: 30px;
+    }
+
+    .contacts__place {
+        font-size: 20px;
+        line-height: 23px;
+        padding: 51px 0 42px 0;
+    }
+
+    .contacts__title {
+        padding-bottom: 0px;
+        line-height: 23px;
+        margin-top: 20px;
+    }
+
+    .contacts__adress,
+    .contacts__email,
+    .contacts__phone {
+        font-size: 18px;
+        line-height: 21px;
+    }
+
+    .contacts__email,
+    .contacts__phone {
+        letter-spacing: -1px;
+    }
+
+    .contacts__phone {
+        padding: 11px 0 10px 0;
+    }
+
+    .contacts__map {
+        height: 476px;
+        width: 728px;
+    }
+    .section.contacts {
+        padding: 0 20px 73px 20px;
+    }
+
+    .footer {
+        padding: 34px 20px;
     }
 }

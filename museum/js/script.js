@@ -212,13 +212,21 @@ window.onclick = function (event) {
 // BURGER MENU 
 
 let burger = document.getElementById("menu__toggle");
+let burgerBtn = document.getElementById("menuBtn")
 let text = document.getElementById("welcomeText");
-let slider = document.getElementById('slider');
+let slider = document.getElementById("slider");
+let burgerImg = document.getElementById("navimg");
+let logo = document.getElementById("logoWrapper");
+let soc = document.getElementById("headerSoc");
 
 burger.addEventListener('click', () => {
   if (window.innerWidth < 1020) {
     slider.classList.toggle('active');
     text.classList.toggle('active');
+    burgerImg.classList.toggle('active');
+    logo.classList.toggle('active');
+    burgerBtn.classList.toggle('active');
+    headerSoc.classList.toggle('active');
   } else {
     text.classList.toggle('active');
   }
