@@ -163,7 +163,7 @@ plusButton.addEventListener('click', event => {
   event.preventDefault();
   const currentValue = Number(inputField.value) || 0;
   inputField.value = currentValue + 1;
-  if (inputField.value > 100) inputField.value = 100;
+  if (inputField.value > 20) inputField.value = 20;
 });
 
 
@@ -185,7 +185,7 @@ plusButton1.addEventListener('click', event => {
   event.preventDefault();
   const currentValue = Number(inputField1.value) || 0;
   inputField1.value = currentValue + 1;
-  if (inputField1.value > 100) inputField1.value = 100;
+  if (inputField1.value > 20) inputField1.value = 20;
 });
 
 
