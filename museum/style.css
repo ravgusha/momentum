@@ -284,6 +284,7 @@ a {
 
 .slides {
     width: 1000px;
+
 }
 
 .slide-1 {
@@ -313,11 +314,29 @@ a {
     background-repeat: no-repeat;
     background-size: cover;
     display: none;
-    transition: all 1.2s ease-in-out;
+    /* transition: all 4s ease-in-out;
+    transition: all 4s ease-in-out;
+    animation: 3s ease-out infinite;  */
+    animation: reveal .5s ease-in-out;
+}
+
+@keyframes reveal {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .slide.active {
     display: flex;
+
+}
+
+.slides.active {
+    cursor: grab;
 }
 
 .welcome__pagination {
@@ -516,8 +535,6 @@ a {
 
 .img-comp-img img {
     display: block;
-    vertical-align: middle;
-
 }
 
 .img-comp-slider {
@@ -825,6 +842,20 @@ a {
 .gallery__image {
     width: 32%;
     margin-bottom: 2%;
+    opacity: 0;
+    transform: translateY(150px)  translateZ(0);
+    -webkit-transition-delay: .3s;
+    -o-transition-delay: .3s;
+    transition-delay: 2.3s;
+    -webkit-transition: .4s;
+    -o-transition: .4s;
+    transition: 2.4s;
+}
+
+.gallery__image.inView {
+    opacity: 1;
+    -webkit-transform: translateY(0px) rotate(0deg) translateZ(0);
+    transform: translateY(0px) rotate(0deg) translateZ(0);
 }
 
 .gallery__image:nth-child(3n+1) {
@@ -2973,6 +3004,7 @@ footer {
         height: 476px;
         width: 728px;
     }
+
     .section.contacts {
         padding: 0 20px 73px 20px;
     }

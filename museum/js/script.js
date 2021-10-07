@@ -1,4 +1,5 @@
 let slide = document.getElementsByClassName("slide");
+let slides = document.getElementById("slides");
 let prevBtn = document.getElementById("prev");
 let nextBtn = document.getElementById("next");
 let counter = document.getElementById("counter");
@@ -8,6 +9,8 @@ let paginationSquare = document.getElementsByClassName("square");
 let currentIndex = 0;
 let newIndex = 0;
 
+
+// WELCOME SLIDER
 function showCurrentSlide() { // Отображаем номер слайда в дробной пагинации
   currentSlide.textContent = '0' + (newIndex + 1);
 };
@@ -136,6 +139,7 @@ function initComparisons() {
 initComparisons();
 
 // COLORING VOLUME INPUT 
+
 document.getElementById("volumeInput").oninput = function () {
   var value = (this.value - this.min) / (this.max - this.min) * 100
   this.style.background = 'linear-gradient(to right, #710707 0%, #710707 ' + value + '%, #fff ' + value + '%, white 100%)'
@@ -146,7 +150,7 @@ document.getElementById("progressInput").oninput = function () {
   this.style.background = 'linear-gradient(to right, #710707 0%, #710707 ' + value + '%, #fff ' + value + '%, white 100%)'
 };
 
-// BUT TICKETS INPUT COUNTER
+// BUY TICKETS INPUT COUNTER
 
 const minusButton = document.getElementById('minus');
 const plusButton = document.getElementById('plus');
@@ -165,9 +169,6 @@ plusButton.addEventListener('click', event => {
   inputField.value = currentValue + 1;
   if (inputField.value > 20) inputField.value = 20;
 });
-
-
-
 
 
 const minusButton1 = document.getElementById('minus1');
@@ -231,3 +232,24 @@ burger.addEventListener('click', () => {
     text.classList.toggle('active');
   }
 })
+
+
+
+// FADE-IN EFFECT
+let elementsArray = document.getElementsByClassName("gallery__image");
+console.log(elementsArray);
+
+window.addEventListener('scroll', fadeIn ); 
+function fadeIn() {
+    for (var i = 0; i < elementsArray.length; i++) {
+        var elem = elementsArray[i]
+        console.log(elem)
+        var distInView = elem.getBoundingClientRect().top - window.innerHeight + 20;
+        if (distInView < 0) {
+            elem.classList.add("inView");
+        } else {
+            elem.classList.remove("inView");
+        }
+    }
+}
+fadeIn();
