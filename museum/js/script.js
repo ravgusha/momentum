@@ -150,64 +150,6 @@ document.getElementById("progressInput").oninput = function () {
   this.style.background = 'linear-gradient(to right, #710707 0%, #710707 ' + value + '%, #fff ' + value + '%, white 100%)'
 };
 
-// BUY TICKETS INPUT COUNTER
-
-const minusButton = document.getElementById('minus');
-const plusButton = document.getElementById('plus');
-const inputField = document.getElementById('input-bas');
-
-minusButton.addEventListener('click', event => {
-  event.preventDefault();
-  const currentValue = Number(inputField.value) || 0;
-  inputField.value = currentValue - 1;
-  if (inputField.value < 0) inputField.value = 0;
-});
-
-plusButton.addEventListener('click', event => {
-  event.preventDefault();
-  const currentValue = Number(inputField.value) || 0;
-  inputField.value = currentValue + 1;
-  if (inputField.value > 20) inputField.value = 20;
-});
-
-
-const minusButton1 = document.getElementById('minus1');
-const plusButton1 = document.getElementById('plus1');
-const inputField1 = document.getElementById('input-sen');
-
-minusButton1.addEventListener('click', event => {
-  event.preventDefault();
-  const currentValue = Number(inputField1.value) || 0;
-  inputField1.value = currentValue - 1;
-  if (inputField1.value < 0) inputField1.value = 0;
-});
-
-plusButton1.addEventListener('click', event => {
-  event.preventDefault();
-  const currentValue = Number(inputField1.value) || 0;
-  inputField1.value = currentValue + 1;
-  if (inputField1.value > 20) inputField1.value = 20;
-});
-
-
-// POP-UP 
-
-const clickBtn = document.getElementById("clickBtn");
-const popup = document.getElementById("popup");
-const closeBtn = document.getElementById("closeBtn");
-
-clickBtn.addEventListener('click', () => {
-  popup.style.left = '0';
-});
-closeBtn.addEventListener('click', () => {
-  popup.style.left = '-6000px';
-});
-
-window.onclick = function (event) {
-  if (event.target == popup) {
-    popup.style.left = '-6000px';
-  }
-}
 
 
 // BURGER MENU 
@@ -235,21 +177,3 @@ burger.addEventListener('click', () => {
 
 
 
-// FADE-IN EFFECT
-let elementsArray = document.getElementsByClassName("gallery__image");
-console.log(elementsArray);
-
-window.addEventListener('scroll', fadeIn ); 
-function fadeIn() {
-    for (var i = 0; i < elementsArray.length; i++) {
-        var elem = elementsArray[i]
-        console.log(elem)
-        var distInView = elem.getBoundingClientRect().top - window.innerHeight + 20;
-        if (distInView < 0) {
-            elem.classList.add("inView");
-        } else {
-            elem.classList.remove("inView");
-        }
-    }
-}
-fadeIn();

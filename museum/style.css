@@ -1103,7 +1103,8 @@ input[type="number"] {
     border-width: 3px;
 }
 
-.input__total {
+.input__total,
+.input__price {
     font-weight: 700;
     font-size: 28px;
     padding: 50px 0 60px;
@@ -1127,6 +1128,11 @@ input[type="number"] {
     background-color: #9d8665;
     color: #000;
 }
+
+.input__total-price {
+    display: flex;
+}
+
 
 /* POP-UP */
 
