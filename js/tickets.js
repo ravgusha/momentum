@@ -64,21 +64,90 @@ const pricesSenior = {
     combined: 20
 };
 
-function ticketStartCounter() {
-    total = document.getElementById("input-bas").value * 20 + document.getElementById("input-sen").value * 10;
-    document.getElementById("inputPrice").innerHTML = `€${total}`
+// SAVING INPUT VALUE
+
+let output = document.querySelector('#input-bas');
+
+document.querySelectorAll('.inpbtn').forEach((el) => {
+    el.addEventListener('click', function () {
+        var newValue = output.value;
+        output.value = newValue;
+
+        var newCost = totalDiv.innerHTML;
+        totalDiv.innerHTML = newCost;
+
+        localStorage.setItem('input-bas', newValue);
+        localStorage.setItem('totalDiv', newCost);
+    });
+});
+
+let output1 = document.querySelector('#input-sen');
+document.querySelectorAll('.inpbtn1').forEach((el) => {
+    el.addEventListener('click', function () {
+        var newValue1 = output1.value;
+        output1.value = newValue1;
+
+        var newCost = totalDiv.innerHTML;
+        totalDiv.innerHTML = newCost;
+
+        // var newRadio = label1.checked;
+        // label1.checked = newRadio;
+
+        // var newRadio2 = label2.checked;
+        // label2.checked = newRadio2;
+
+        localStorage.setItem('input-sen', newValue1);
+        localStorage.setItem('totalDiv', newCost);
+        // localStorage.setItem('label1', newRadio);
+        // localStorage.setItem('label2', newRadio2);
+    });
+});
+
+let label1 = document.getElementById('radioPerm');
+let label2 = document.getElementById('radioTemp');
+let label3 = document.getElementById('radioComb');
+
+var oldValue = localStorage.getItem('input-bas') || 0;
+output.value = oldValue;
+
+var oldValue1 = localStorage.getItem('input-sen') || 0;
+output1.value = oldValue1;
+
+var oldValue3 = localStorage.getItem('totalDiv') || 0;
+totalDiv.innerHTML = oldValue3;
+
+
+// SAVING RADIO BUTTON VALUES
+
+Array.from(document.querySelectorAll('input[type="radio"]')).forEach(function(item, index) {
+  item.addEventListener('click', save);
+});
+
+function save() {
+  var g1 = document.querySelector('input[name=type]:checked').value;
+  localStorage.setItem("g1", g1);
+}
+function reload() {
+  var G1 = Array.from(document.getElementsByName('type'));
+  var val1 = localStorage.getItem('g1');
+  for (var i = 0; i < G1.length; i++) {
+    if (G1[i].value == val1) {
+      G1[i].checked = true;
+    }
+  }
 }
 
-window.onload = ticketStartCounter;
+reload();
 
+// PRICE COUNTING
 document.getElementById('label').addEventListener('click', () => {
     total = document.getElementById("input-bas").value * 20 + document.getElementById("input-sen").value * 10;
-    document.getElementById("inputPrice").innerHTML = `€${total}`
-}) 
+    document.getElementById("inputPrice").innerHTML = `€${total}`;
+})
 
 document.getElementById('label2').addEventListener('click', () => {
     total = document.getElementById("input-bas").value * 25 + document.getElementById("input-sen").value * 12.5;
-    document.getElementById("inputPrice").innerHTML = `€${total}`
+    document.getElementById("inputPrice").innerHTML = `€${total}`;
 })
 
 document.getElementById('label3').addEventListener('click', () => {
@@ -104,7 +173,7 @@ function totalPrice() {
         total = (basic.value) * combPrice + (((senior.value) * tempPrice) / 2);
     }
 
-    totalDiv.innerHTML = `€${total}`
+    totalDiv.innerHTML = `€${total}`;
 }
 
 
