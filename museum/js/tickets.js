@@ -67,6 +67,9 @@ const pricesSenior = {
 // SAVING INPUT VALUE
 
 let output = document.querySelector('#input-bas');
+let output1 = document.querySelector('#input-sen');
+let output2 = document.querySelector('#paymentNumber');
+let output3 = document.querySelector('#paymentNumber2');
 
 document.querySelectorAll('.inpbtn').forEach((el) => {
     el.addEventListener('click', function () {
@@ -78,10 +81,11 @@ document.querySelectorAll('.inpbtn').forEach((el) => {
 
         localStorage.setItem('input-bas', newValue);
         localStorage.setItem('totalDiv', newCost);
+        // localStorage.setItem('paymentNumber', newValue);
     });
 });
 
-let output1 = document.querySelector('#input-sen');
+
 document.querySelectorAll('.inpbtn1').forEach((el) => {
     el.addEventListener('click', function () {
         var newValue1 = output1.value;
@@ -90,16 +94,9 @@ document.querySelectorAll('.inpbtn1').forEach((el) => {
         var newCost = totalDiv.innerHTML;
         totalDiv.innerHTML = newCost;
 
-        // var newRadio = label1.checked;
-        // label1.checked = newRadio;
-
-        // var newRadio2 = label2.checked;
-        // label2.checked = newRadio2;
-
         localStorage.setItem('input-sen', newValue1);
         localStorage.setItem('totalDiv', newCost);
-        // localStorage.setItem('label1', newRadio);
-        // localStorage.setItem('label2', newRadio2);
+        // localStorage.setItem('paymentNumber2', newValue1);
     });
 });
 
@@ -113,8 +110,14 @@ output.value = oldValue;
 var oldValue1 = localStorage.getItem('input-sen') || 0;
 output1.value = oldValue1;
 
-var oldValue3 = localStorage.getItem('totalDiv') || 0;
-totalDiv.innerHTML = oldValue3;
+// var oldValue2 = localStorage.getItem('paymentNumber') || 0;
+// output2.innerHTML = oldValue2;
+
+// var oldValue3 = localStorage.getItem('totalDiv') || 0;
+// totalDiv.innerHTML = oldValue3;
+
+// var oldValue4 = localStorage.getItem('paymentNumber2') || 0;
+// output3.innerHTML = oldValue4;
 
 
 // SAVING RADIO BUTTON VALUES
@@ -133,31 +136,74 @@ function reload() {
   for (var i = 0; i < G1.length; i++) {
     if (G1[i].value == val1) {
       G1[i].checked = true;
+
+    //   Counting total sum after refresh
+      totalDiv.innerHTML =  oldValue * G1[i].value + ((oldValue1 *G1[i].value)/2); 
     }
   }
 }
 
 reload();
 
+// SETTING POP-UP VALUES 
+let basicInput = document.getElementById('basicInput');
+let seniorInput = document.getElementById('seniorInput');
+
+document.getElementById('clickBtn').addEventListener ('click', () => {
+ output2.innerHTML = inputField.value;
+ output3.innerHTML = inputField1.value;
+ basicInput.value = inputField.value;
+ seniorInput.value = inputField1.value;
+ document.getElementById("totalNumber").innerHTML = totalDiv.innerHTML + `€`;
+ document.getElementById("popupType").value = document.querySelector('input[name=type]:checked').parentElement.textContent;
+})
+
+
+// function setSelectBoxByText(eid, etxt) {
+//     var eid = document.getElementById(eid);
+//     var etxt = 
+//     for (var i = 0; i < eid.options.length; ++i) {
+//         if (eid.options[i].text === etxt)
+//             eid.options[i].selected = true;
+//     }
+// }
+
+
+console.log(document.querySelector('input[name=type]:checked').parentElement.textContent);
+
+
+
+
+
+
+
+
+
+
+
+
+
 // PRICE COUNTING
 document.getElementById('label').addEventListener('click', () => {
     total = document.getElementById("input-bas").value * 20 + document.getElementById("input-sen").value * 10;
-    document.getElementById("inputPrice").innerHTML = `€${total}`;
+    totalDiv.innerHTML = `${total}`;
+    // document.getElementById("totalNumber").innerHTML = `€${total}`;
 })
 
 document.getElementById('label2').addEventListener('click', () => {
     total = document.getElementById("input-bas").value * 25 + document.getElementById("input-sen").value * 12.5;
-    document.getElementById("inputPrice").innerHTML = `€${total}`;
+    totalDiv.innerHTML = `${total}`;
+    // document.getElementById("totalNumber").innerHTML = `€${total}`;
 })
 
 document.getElementById('label3').addEventListener('click', () => {
     total = document.getElementById("input-bas").value * 40 + document.getElementById("input-sen").value * 20;
-    document.getElementById("inputPrice").innerHTML = `€${total}`
+    totalDiv.innerHTML = `${total}`;
+    // document.getElementById("totalNumber").innerHTML = `€${total}`;
 })
 
 
 function totalPrice() {
-
     let basic = document.getElementById("input-bas");
     let senior = document.getElementById("input-sen");
 
@@ -173,7 +219,7 @@ function totalPrice() {
         total = (basic.value) * combPrice + (((senior.value) * tempPrice) / 2);
     }
 
-    totalDiv.innerHTML = `€${total}`;
+    totalDiv.innerHTML = `${total}`;
 }
 
 
