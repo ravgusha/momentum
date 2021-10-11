@@ -31,7 +31,6 @@ let result2 = result.toString().replace(/\\"/g,'"').replace(/,/g,' ');
 
 pictureInnerContainer.innerHTML = result2;
 
-
 // FADE-IN EFFECT
 let elementsArray = document.getElementsByClassName("gallery__image");
 

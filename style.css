@@ -284,7 +284,6 @@ a {
 
 .slides {
     width: 1000px;
-
 }
 
 .slide-1 {
@@ -314,6 +313,7 @@ a {
     background-repeat: no-repeat;
     background-size: cover;
     display: none;
+
     /* transition: all 4s ease-in-out;
     transition: all 4s ease-in-out;
     animation: 3s ease-out infinite;  */
@@ -328,15 +328,19 @@ a {
     to {
         opacity: 1;
     }
+
+
 }
 
 .slide.active {
     display: flex;
 
+
 }
 
 .slides.active {
     cursor: grab;
+
 }
 
 .welcome__pagination {
@@ -1103,6 +1107,7 @@ input[type="number"] {
     border-width: 3px;
 }
 
+
 .input__total,
 .input__price {
     font-weight: 700;
@@ -1132,7 +1137,6 @@ input[type="number"] {
 .input__total-price {
     display: flex;
 }
-
 
 /* POP-UP */
 
