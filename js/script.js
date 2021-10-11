@@ -1,4 +1,8 @@
 let slide = document.getElementsByClassName("slide");
+
+let slides = document.getElementById("slides");
+
+
 let prevBtn = document.getElementById("prev");
 let nextBtn = document.getElementById("next");
 let counter = document.getElementById("counter");
@@ -7,6 +11,10 @@ let paginationSquare = document.getElementsByClassName("square");
 
 let currentIndex = 0;
 let newIndex = 0;
+
+
+
+// WELCOME SLIDER
 
 function showCurrentSlide() { // Отображаем номер слайда в дробной пагинации
   currentSlide.textContent = '0' + (newIndex + 1);
@@ -136,6 +144,7 @@ function initComparisons() {
 initComparisons();
 
 // COLORING VOLUME INPUT 
+
 document.getElementById("volumeInput").oninput = function () {
   var value = (this.value - this.min) / (this.max - this.min) * 100
   this.style.background = 'linear-gradient(to right, #710707 0%, #710707 ' + value + '%, #fff ' + value + '%, white 100%)'
@@ -145,6 +154,8 @@ document.getElementById("progressInput").oninput = function () {
   var value = (this.value - this.min) / (this.max - this.min) * 100
   this.style.background = 'linear-gradient(to right, #710707 0%, #710707 ' + value + '%, #fff ' + value + '%, white 100%)'
 };
+
+
 
 // BUT TICKETS INPUT COUNTER
 
@@ -231,3 +242,4 @@ burger.addEventListener('click', () => {
     text.classList.toggle('active');
   }
 })
+

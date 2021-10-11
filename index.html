@@ -7,11 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>museum</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="assets/favicon.ico">
-    <link type="text/css" href="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.css"
-        property='stylesheet'>
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 
 <body>
@@ -25,7 +20,7 @@
 
                 <nav class="nav hamburger-menu" id="hamnav">
                     <input id="menu__toggle" type="checkbox" />
-                    <label id="menuBtn"class="menu__btn" for="menu__toggle">
+                    <label id="menuBtn" class="menu__btn" for="menu__toggle">
                         <span></span>
                     </label>
 
@@ -89,7 +84,7 @@
                             <a target="_blank" href="panoramas/1.html" class="welcome__button">Discover the Louvre</a>
                         </div>
                         <div class="welcome__slider" id="slider">
-                            <div class="slides">
+                            <div class="slides" id="slides">
                                 <div class="slide slide-1 active"></div>
                                 <div class="slide slide-2"></div>
                                 <div class="slide slide-3"></div>
@@ -276,11 +271,13 @@
                                 <div class="ticket__type">
                                     <h4 class="ticket__type_title">Ticket Type</h4>
                                     <form class="ticket__form">
-                                        <label class="label"><input type="radio" name="type" value="permanent" checked
-                                                class="input">Permanent exhibition<br></label>
-                                        <label><input type="radio" name="type" value="temporary" class="input">Temporary
+                                        <label id="label" class="label"><input type="radio" name="type" 
+                                                class="input" id="radioPerm" value="20">Permanent exhibition<br></label>
+                                        <label id="label2"><input type="radio" name="type" value="25" class="input"
+                                                id="radioTemp">Temporary
                                             exhibition<br></label>
-                                        <label><input type="radio" name="type" value="combined" class="input">Combined
+                                        <label id="label3"><input type="radio" name="type" value="40" class="input"
+                                                id="radioComb">Combined
                                             Admission</label>
                                     </form>
                                 </div>
@@ -288,19 +285,22 @@
                                     <h4 class="ticket__amount_title">Amount</h4>
                                     <p class="input__basic">Basic 18+</p>
                                     <div class="number-input">
-                                        <button class="input__minus" id="minus"></button>
-                                        <input type="number" step="1" placeholder=" 1" id="input-bas" min="1" max="20"
-                                            class="ticket__input">
-                                        <button class="input__plus" id="plus"></button>
+                                        <button class="input__minus inpbtn" id="minus"></button>
+                                        <input type="number" step="1" placeholder="0" id="input-bas" min="0" max="20"
+                                            class="ticket__input" value="0">
+                                        <button class="input__plus inpbtn" id="plus"></button>
                                     </div>
                                     <p class="input__senior">Senior 65+</p>
                                     <div class="number-input">
-                                        <button class="input__minus" id="minus1"></button>
-                                        <input type="number" step="1" placeholder="1" id="input-sen" min="1" max="20"
-                                            class="ticket__input">
-                                        <button class="input__plus" id="plus1"></button>
+                                        <button class="input__minus inpbtn1" id="minus1"></button>
+                                        <input type="number" step="1" placeholder="0" id="input-sen" min="0" max="20"
+                                            class="ticket__input" value="0">
+                                        <button class="input__plus inpbtn1" id="plus1"></button>
                                     </div>
-                                    <p class="input__total">Total €220</p>
+                                    <div class="input__total-price">
+                                        <p class="input__total" id="inputTotal">Total: </p>
+                                        <p class="input__price" id="inputPrice">€ 0</p>
+                                    </div>
                                     <button class="input__button" id="clickBtn">Buy Now</button>
                                     <div id="popup" class="popup">
                                         <div class="popup-container" id="popupCont">
@@ -521,6 +521,7 @@
     </div>
     <script src="./js/script.js"></script>
     <script src="./js/gallery.js"></script>
+    <script src="./js/tickets.js"></script>
 </body>
 
 </html>

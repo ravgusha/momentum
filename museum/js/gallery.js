@@ -1,3 +1,5 @@
+// GALLERY CREATING
+
 const pictureInnerContainer = document.querySelector('.gallery__picture_container');
 
 let paths = [
@@ -28,3 +30,23 @@ let result = paths.map(currentValue => `<img class="gallery__image" ${currentVal
 let result2 = result.toString().replace(/\\"/g,'"').replace(/,/g,' ');
 
 pictureInnerContainer.innerHTML = result2;
+
+
+// FADE-IN EFFECT
+let elementsArray = document.getElementsByClassName("gallery__image");
+
+window.addEventListener('scroll', fadeIn);
+
+function fadeIn() {
+  for (var i = 0; i < elementsArray.length; i++) {
+    var elem = elementsArray[i]
+
+    var distInView = elem.getBoundingClientRect().top - window.innerHeight + 20;
+    if (distInView < 0) {
+      elem.classList.add("inView");
+    } else {
+      elem.classList.remove("inView");
+    }
+  }
+}
+fadeIn();

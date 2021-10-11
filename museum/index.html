@@ -7,43 +7,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>museum</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="assets/favicon.ico">
-    <link type="text/css" href="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.css"
-        property='stylesheet'>
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
 </head>
 
 <body>
     <div class="body__container">
         <header class="header">
             <div class="header__container">
-                <div class="logo-wrapper">
+                <div class="logo-wrapper" id="logoWrapper">
                     <div class="logo"></div>
                     <h1 class="header__title">Louvre</h1>
                 </div>
-                <nav class="nav">
-                    <ul class="nav-list">
-                        <li class="nav__item">
+
+                <nav class="nav hamburger-menu" id="hamnav">
+                    <input id="menu__toggle" type="checkbox" />
+                    <label id="menuBtn" class="menu__btn" for="menu__toggle">
+                        <span></span>
+                    </label>
+
+                    <ul class="nav__list menu__box" id="hamitems">
+                        <li class="nav__item menu__item">
                             <a href="#visiting">Visiting</a>
                         </li>
-                        <li class="nav__item">
+                        <li class="nav__item menu__item">
                             <a href="#explore">Explore</a>
                         </li>
-                        <li class="nav__item">
+                        <li class="nav__item menu__item">
                             <a href="#video">Video</a>
                         </li>
-                        <li class="nav__item">
+                        <li class="nav__item menu__item">
                             <a href="#gallery">Gallery</a>
                         </li>
-                        <li class="nav__item">
+                        <li class="nav__item menu__item">
                             <a href="#tickets">Tickets</a>
                         </li>
-                        <li class="nav__item">
+                        <li class="nav__item menu__item">
                             <a href="#contacts">Contacts</a>
                         </li>
                     </ul>
+                    <div class="nav__images" id="navimg">
+                        <img src="./assets/img/burger.jpg" alt="">
+                        <img class="nav__image2" src="./assets/img/burger1.jpg" alt="">
+                        <img src="./assets/img/burger2.jpg" alt="">
+                    </div>
+                    <div class="header__soc" id="headerSoc">
+                        <ul class="header__soc_list">
+                            <li class="header__soc_item">
+                                <a href="https://www.youtube.com/user/louvre" class="soc__link yt" target="_blank"></a>
+                            </li>
+                            <li class="header__soc_item">
+                                <a href="https://www.instagram.com/museelouvre/" class="soc__link inst"
+                                    target="_blank"></a>
+                            </li>
+                            <li class="header__soc_item">
+                                <a href="https://www.facebook.com/museedulouvre" class="soc__link fb"
+                                    target="_blank"></a>
+                            </li>
+                            <li class="header__soc_item">
+                                <a href="http://twitter.com/museelouvre" class="soc__link twt" target="_blank"></a>
+                            </li>
+                            <li class="header__soc_item">
+                                <a href="https://www.pinterest.fr/museedulouvre/" class="soc__link pint"
+                                    target="_blank"></a>
+                            </li>
+                        </ul>
+                    </div>
                 </nav>
             </div>
         </header>
@@ -51,13 +78,13 @@
             <div class="main-container">
                 <section class="welcome section dark-section">
                     <div class="welcome__container">
-                        <div class="welcome__text">
+                        <div class="welcome__text" id="welcomeText">
                             <h2 class="welcome__title title">Welcome <br>to the louvre</h2>
                             <p class="welcome__subtitle">From the castle to the museum</p>
                             <a target="_blank" href="panoramas/1.html" class="welcome__button">Discover the Louvre</a>
                         </div>
                         <div class="welcome__slider" id="slider">
-                            <div class="slides">
+                            <div class="slides" id="slides">
                                 <div class="slide slide-1 active"></div>
                                 <div class="slide slide-2"></div>
                                 <div class="slide slide-3"></div>
@@ -139,13 +166,13 @@
                             <h2 class="explore__title title">Picture explore</h2>
                             <p class="explore__paragraph explore__paragraph_one">Las Meninas is a 1656 painting by Diego
                                 Velázquez,
-                                the leading<br> artist of the Spanish Golden Age.</p>
+                                the leading artist of the Spanish Golden Age.</p>
                             <p class="explore__paragraph explore__paragraph_two">It was cleaned in 1984 to remove a
                                 <span class="explore__text_span">"yellow veil"</span> of
-                                dust that had<br> gathered since the previous restoration in the 19th century.</p>
+                                dust that had gathered since the previous restoration in the 19th century.</p>
                             <p class="explore__paragraph explore__paragraph_three">The cleaning provoked furious
                                 protests, not because
-                                the picture had<br> been damaged in any way, but because it looked different.</p>
+                                the picture had been damaged in any way, but because it looked different.</p>
                         </div>
                         <div class="img-comp-container">
                             <div class="img-comp-img">
@@ -237,35 +264,45 @@
                     <div class="tickets__container">
                         <h2 class="tickets__title title">Buy tickets</h2>
                         <div class="tickets__main">
-                            <img class="ticket__image" src="./assets/img/tickets.jpg" alt="painting">
+                            <div class="ticket__images">
+                                <img class="ticket__image" src="./assets/img/tickets.jpg" alt="painting">
+                            </div>
                             <div class="tickets__input_container">
                                 <div class="ticket__type">
                                     <h4 class="ticket__type_title">Ticket Type</h4>
                                     <form class="ticket__form">
-                                        <label class="label"><input type="radio" name="type" value="permanent" checked class="input">Permanent exhibition<br></label>
-                                        <label><input type="radio" name="type" value="temporary" class="input">Temporary exhibition<br></label>
-                                        <label><input type="radio" name="type" value="combined" class="input">Combined Admission</label> 
+                                        <label id="label" class="label"><input type="radio" name="type" 
+                                                class="input" id="radioPerm" value="20">Permanent exhibition</label><br></label>
+                                        <label id="label2"><input type="radio" name="type" value="25" class="input"
+                                                id="radioTemp">Temporary exhibition<br></label>
+                                        <label id="label3"><input type="radio" name="type" value="40" class="input"
+                                                id="radioComb">Combined Admission</label>
                                     </form>
                                 </div>
                                 <div class="ticket__amount">
                                     <h4 class="ticket__amount_title">Amount</h4>
                                     <p class="input__basic">Basic 18+</p>
                                     <div class="number-input">
-                                        <button class="input__minus" id="minus"></button>
-                                        <input type="number" step="1" placeholder=" 1" id="input-bas" min="1" max="20">
-                                        <button class="input__plus" id="plus"></button>
+                                        <button class="input__minus inpbtn" id="minus"></button>
+                                        <input type="number" step="1" placeholder="0" id="input-bas" min="0" max="20"
+                                            class="ticket__input" value="0">
+                                        <button class="input__plus inpbtn" id="plus"></button>
                                     </div>
                                     <p class="input__senior">Senior 65+</p>
                                     <div class="number-input">
-                                        <button class="input__minus" id="minus1"></button>
-                                        <input type="number" step="1" placeholder="1" id="input-sen" min="1" max="20">
-                                        <button class="input__plus" id="plus1"></button>
+                                        <button class="input__minus inpbtn1" id="minus1"></button>
+                                        <input type="number" step="1" placeholder="0" id="input-sen" min="0" max="20"
+                                            class="ticket__input" value="0">
+                                        <button class="input__plus inpbtn1" id="plus1"></button>
                                     </div>
-                                    <p class="input__total">Total €220</p>
+                                    <div class="input__total-price">
+                                        <p class="input__total" id="inputTotal">Total: €</p>
+                                        <p class="input__price" id="inputPrice"> 0</p>
+                                    </div>
                                     <button class="input__button" id="clickBtn">Buy Now</button>
                                     <div id="popup" class="popup">
                                         <div class="popup-container" id="popupCont">
-                                            <div class="close-popup" id="closeBtn"><a href="#"></a></div>
+
                                             <div class="popup__main">
                                                 <div class="popup__left">
                                                     <div class="popup__logo"></div>
@@ -277,13 +314,13 @@
                                                         <input type="text" class="popup__name" placeholder="Name">
                                                         <input type="email" class="popup__email" placeholder="E-mail">
                                                         <input type="tel" class="popup__phone" placeholder="Phone">
-                                                        <select class="popup__type">
-                                                            <option value="" class="popup__option" disabled selected>
-                                                                Ticket Type
+                                                        <select class="popup__type" id="popupType">
+                                                            <!-- <option value="" class="popup__option" disabled selected> -->
+                                                                <!-- Ticket Type -->
                                                             </option>
                                                             <option>Permanent exhibition</option>
                                                             <option>Temporary exhibition</option>
-                                                            <option>Combined exhibition</option>
+                                                            <option>Combined Admission</option>
                                                         </select>
                                                         <i class="pseudo"></i>
                                                     </form>
@@ -303,7 +340,7 @@
                                                             <div class="total__senior_input">
                                                                 <button class="senior__minus" id="seniorMinus"></button>
                                                                 <input class="senior__input" type="number" step="1"
-                                                                    placeholder=" 2" id="totalInput" min="1">
+                                                                    placeholder=" 2" id="seniorInput" min="1">
                                                                 <button class="senior__plus" id="seniorPlus"></button>
                                                             </div>
                                                         </div>
@@ -326,7 +363,7 @@
                                                     <div class="payment__amount">
                                                         <div class="payment__amount_one">
                                                             <div class="payment__amount_left">
-                                                                <span class="payment__number">2</span>
+                                                                <span class="payment__number" id="paymentNumber">2</span>
                                                                 <p class="payment__total">Basic (20 €)</p>
                                                             </div>
                                                             <p class="payment__sum">40 €</p>
@@ -334,7 +371,7 @@
                                                         </div>
                                                         <div class="payment__amount_two">
                                                             <div class="payment__amount_left left">
-                                                                <span class="payment__number">2</span>
+                                                                <span class="payment__number" id="paymentNumber2">2</span>
                                                                 <p class="payment__total">Senior (10 €)</p>
                                                             </div>
                                                             <p class="payment__sum sum-left">20 €</p>
@@ -343,7 +380,7 @@
                                                     <div class="payment__bottom">
                                                         <div class="total__sum">
                                                             <p class="total__text">Total:</p>
-                                                            <p class="total__number">60 €</p>
+                                                            <p class="total__number" id="totalNumber">60 €</p>
                                                         </div>
                                                     </div>
                                                     <div class="credit__card">
@@ -386,6 +423,7 @@
                                                         <button class="book__button" id="bookBtn">Book</button>
                                                     </div>
                                                 </div>
+                                                <div class="close-popup" id="closeBtn"><a href="#"></a></div>
                                             </div>
                                         </div>
                                     </div>
@@ -393,9 +431,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="parallax">
-                    </div>
+
                 </section>
+                <div class="parallax">
+                </div>
                 <section class="section contacts" id="contacts">
                     <div class="contacts__container">
                         <h2 class="contacts__title title">Contacts</h2>
@@ -409,7 +448,7 @@
                                         class="contacts__email_a">mail: info@louvre.fr</a></p>
                             </div>
                             <div class="contacts__map">
-                                <img src="./assets/img/map.jpg" alt="map">
+                                <img class="contacts__map_image" src="./assets/img/map.jpg" alt="map">
                             </div>
                         </div>
                     </div>
@@ -480,6 +519,7 @@
     </div>
     <script src="./js/script.js"></script>
     <script src="./js/gallery.js"></script>
+    <script src="./js/tickets.js"></script>
 </body>
 
 </html>
