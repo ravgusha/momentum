@@ -110,37 +110,28 @@ output.value = oldValue;
 var oldValue1 = localStorage.getItem('input-sen') || 0;
 output1.value = oldValue1;
 
-// var oldValue2 = localStorage.getItem('paymentNumber') || 0;
-// output2.innerHTML = oldValue2;
-
-// var oldValue3 = localStorage.getItem('totalDiv') || 0;
-// totalDiv.innerHTML = oldValue3;
-
-// var oldValue4 = localStorage.getItem('paymentNumber2') || 0;
-// output3.innerHTML = oldValue4;
-
-
 // SAVING RADIO BUTTON VALUES
 
-Array.from(document.querySelectorAll('input[type="radio"]')).forEach(function(item, index) {
-  item.addEventListener('click', save);
+Array.from(document.querySelectorAll('input[type="radio"]')).forEach(function (item, index) {
+    item.addEventListener('click', save);
 });
 
 function save() {
-  var g1 = document.querySelector('input[name=type]:checked').value;
-  localStorage.setItem("g1", g1);
+    var g1 = document.querySelector('input[name=type]:checked').value;
+    localStorage.setItem("g1", g1);
 }
-function reload() {
-  var G1 = Array.from(document.getElementsByName('type'));
-  var val1 = localStorage.getItem('g1');
-  for (var i = 0; i < G1.length; i++) {
-    if (G1[i].value == val1) {
-      G1[i].checked = true;
 
-    //   Counting total sum after refresh
-      totalDiv.innerHTML =  oldValue * G1[i].value + ((oldValue1 *G1[i].value)/2); 
+function reload() {
+    var G1 = Array.from(document.getElementsByName('type'));
+    var val1 = localStorage.getItem('g1');
+    for (var i = 0; i < G1.length; i++) {
+        if (G1[i].value == val1) {
+            G1[i].checked = true;
+
+            //   Counting total sum after refresh
+            totalDiv.innerHTML = oldValue * G1[i].value + ((oldValue1 * G1[i].value) / 2);
+        }
     }
-  }
 }
 
 reload();
@@ -149,57 +140,29 @@ reload();
 let basicInput = document.getElementById('basicInput');
 let seniorInput = document.getElementById('seniorInput');
 
-document.getElementById('clickBtn').addEventListener ('click', () => {
- output2.innerHTML = inputField.value;
- output3.innerHTML = inputField1.value;
- basicInput.value = inputField.value;
- seniorInput.value = inputField1.value;
- document.getElementById("totalNumber").innerHTML = totalDiv.innerHTML + `€`;
- document.getElementById("popupType").value = document.querySelector('input[name=type]:checked').parentElement.textContent;
+document.getElementById('clickBtn').addEventListener('click', () => {
+    output2.innerHTML = inputField.value;
+    output3.innerHTML = inputField1.value;
+    basicInput.value = inputField.value;
+    seniorInput.value = inputField1.value;
+    document.getElementById("totalNumber").innerHTML = totalDiv.innerHTML + `€`;
+    document.getElementById("popupType").value = document.querySelector('input[name=type]:checked').parentElement.textContent;
 })
-
-
-// function setSelectBoxByText(eid, etxt) {
-//     var eid = document.getElementById(eid);
-//     var etxt = 
-//     for (var i = 0; i < eid.options.length; ++i) {
-//         if (eid.options[i].text === etxt)
-//             eid.options[i].selected = true;
-//     }
-// }
-
-
-console.log(document.querySelector('input[name=type]:checked').parentElement.textContent);
-
-
-
-
-
-
-
-
-
-
-
-
 
 // PRICE COUNTING
 document.getElementById('label').addEventListener('click', () => {
     total = document.getElementById("input-bas").value * 20 + document.getElementById("input-sen").value * 10;
     totalDiv.innerHTML = `${total}`;
-    // document.getElementById("totalNumber").innerHTML = `€${total}`;
 })
 
 document.getElementById('label2').addEventListener('click', () => {
     total = document.getElementById("input-bas").value * 25 + document.getElementById("input-sen").value * 12.5;
     totalDiv.innerHTML = `${total}`;
-    // document.getElementById("totalNumber").innerHTML = `€${total}`;
 })
 
 document.getElementById('label3').addEventListener('click', () => {
     total = document.getElementById("input-bas").value * 40 + document.getElementById("input-sen").value * 20;
     totalDiv.innerHTML = `${total}`;
-    // document.getElementById("totalNumber").innerHTML = `€${total}`;
 })
 
 
@@ -242,4 +205,32 @@ window.onclick = function (event) {
     if (event.target == popup) {
         popup.style.left = '-6000px';
     }
+}
+
+
+// DISABLE DATES BEFORE TODAY
+var today = new Date().toISOString().split('T')[0];
+document.getElementById('popupDate').setAttribute('min', today);
+
+
+
+function handler() {
+    let d = new Date(document.getElementById('popupDate').value);
+    let we = new Intl.DateTimeFormat('en', {
+        weekday: 'long'
+    }).format(d);
+    let mo = new Intl.DateTimeFormat('en', {
+        month: 'long'
+    }).format(d);
+    let da = new Intl.DateTimeFormat('en', {
+        day: '2-digit'
+    }).format(d);
+    document.getElementById('paymentDate').innerHTML = (`${we}, ${mo} ${da}`);
+}
+
+console.log(document.getElementById('popupTime').value);
+
+function handler2() {
+    let time = document.getElementById('popupTime').value;
+    document.getElementById('paymentTime').innerHTML = time;
 }
