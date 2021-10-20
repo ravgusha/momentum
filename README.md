@@ -1,2 +1,1 @@
-# ravgusha-JSFE2021Q3
-Private repository for @ravgusha
+# stage1-tasks
