@@ -165,6 +165,7 @@ city.addEventListener('input', saveCity);
 
 function saveCity() {
     localStorage.setItem('city', city.value);
+    getWeather();
 }
 
 city.value = localStorage.getItem('city');
@@ -175,6 +176,8 @@ city.value = localStorage.getItem('city');
 const weatherIcon = document.querySelector('.weather-icon');
 const temperature = document.querySelector('.temperature');
 const weatherDescription = document.querySelector('.weather-description');
+let windSpeed = document.querySelector('.wind');
+let humidity = document.querySelector('.humidity');
 
 
 async function getWeather() {
@@ -184,11 +187,16 @@ async function getWeather() {
     const data = await res.json();
 
     temp = Math.floor(data.main.temp);
+    wind = Math.floor(data.wind.speed);
 
+    weatherIcon.className = 'weather-icon owf';
     weatherIcon.classList.add(`owf-${data.weather[0].id}`);
     temperature.textContent = `${temp}°C`;
     weatherDescription.textContent = data.weather[0].description;
+    windSpeed.textContent = `Wind speed: ${wind} m/s`;
+    humidity.textContent = `Humidity: ${data.main.humidity} %`;
 }
-getWeather();
+
+document.addEventListener('DOMContentLoaded', getWeather);
 
 
