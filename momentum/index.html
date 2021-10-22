@@ -2,550 +2,124 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>museum</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="assets/favicon.ico" rel="shortcut icon" />
+    <link rel="stylesheet" href="css/owfont-regular.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>momentum</title>
 </head>
 
-<body>
-    <div class="body__container">
-        <header class="header">
-            <div class="header__container">
-                <div class="logo-wrapper" id="logoWrapper">
-                    <div class="logo"></div>
-                    <h1 class="header__title">Louvre</h1>
+<body id="body">
+    <header class="header">
+        <div class="player">
+            <audio id="myAudio" ontimeupdate="onTimeUpdate()">
+                <source id="source-audio" src="" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <div class="player-ctn">
+                <div class="infos-ctn">
+                    <div class="timer">00:00</div>
+                    <div class="title"></div>
+                    <div class="duration">00:00</div>
                 </div>
-
-                <nav class="nav hamburger-menu" id="hamnav">
-                    <input id="menu__toggle" type="checkbox" />
-                    <label id="menuBtn" class="menu__btn" for="menu__toggle">
-                        <span></span>
-                    </label>
-
-                    <ul class="nav__list menu__box" id="hamitems">
-                        <li class="nav__item menu__item">
-                            <a href="#visiting">Visiting</a>
-                        </li>
-                        <li class="nav__item menu__item">
-                            <a href="#explore">Explore</a>
-                        </li>
-                        <li class="nav__item menu__item">
-                            <a href="#video">Video</a>
-                        </li>
-                        <li class="nav__item menu__item">
-                            <a href="#gallery">Gallery</a>
-                        </li>
-                        <li class="nav__item menu__item">
-                            <a href="#tickets">Tickets</a>
-                        </li>
-                        <li class="nav__item menu__item">
-                            <a href="#contacts">Contacts</a>
-                        </li>
-                    </ul>
-                    <div class="nav__images" id="navimg">
-                        <img src="./assets/img/burger.jpg" alt="">
-                        <img class="nav__image2" src="./assets/img/burger1.jpg" alt="">
-                        <img src="./assets/img/burger2.jpg" alt="">
+                <div id="myProgress">
+                    <div id="myBar"></div>
+                </div>
+                <div class="btn-ctn">
+                    <div class="btn-action first-btn" onclick="previous()">
+                        <div id="btn-faws-back">
+                            <i class='fas fa-step-backward'></i>
+                        </div>
                     </div>
-                    <div class="header__soc" id="headerSoc">
-                        <ul class="header__soc_list">
-                            <li class="header__soc_item">
-                                <a href="https://www.youtube.com/user/louvre" class="soc__link yt" target="_blank"></a>
-                            </li>
-                            <li class="header__soc_item">
-                                <a href="https://www.instagram.com/museelouvre/" class="soc__link inst"
-                                    target="_blank"></a>
-                            </li>
-                            <li class="header__soc_item">
-                                <a href="https://www.facebook.com/museedulouvre" class="soc__link fb"
-                                    target="_blank"></a>
-                            </li>
-                            <li class="header__soc_item">
-                                <a href="http://twitter.com/museelouvre" class="soc__link twt" target="_blank"></a>
-                            </li>
-                            <li class="header__soc_item">
-                                <a href="https://www.pinterest.fr/museedulouvre/" class="soc__link pint"
-                                    target="_blank"></a>
-                            </li>
-                        </ul>
+                    <div class="btn-action" onclick="rewind()">
+                        <div id="btn-faws-rewind">
+                            <i class='fas fa-backward'></i>
+                        </div>
                     </div>
-                </nav>
+                    <div class="btn-action" onclick="toggleAudio()">
+                        <div id="btn-faws-play-pause">
+                            <i class='fas fa-play' id="icon-play"></i>
+                            <i class='fas fa-pause' id="icon-pause" style="display: none"></i>
+                        </div>
+                    </div>
+                    <div class="btn-play" onclick="forward()">
+                        <div id="btn-faws-forward">
+                            <i class='fas fa-forward'></i>
+                        </div>
+                    </div>
+                    <div class="btn-action" onclick="next()">
+                        <div id="btn-faws-next">
+                            <i class='fas fa-step-forward'></i>
+                        </div>
+                    </div>
+                    <div class="volume">
+                        <div class="btn-mute" id="toggleMute" onclick="toggleMute()">
+                            <div id="btn-faws-volume">
+                                <i id="icon-vol-up" class='fas fa-volume-up'></i>
+                                <i id="icon-vol-mute" class='fas fa-volume-mute' style="display: none"></i>
+                            </div>
+                        </div>
+                        <input type="range" onchange="setVolume()" id='volumeRange' min=0 max=1 step=0.01 value='0.30'>
+                    </div>
+                </div>
+                <div class="playlist-ctn"></div>
             </div>
-        </header>
-        <main class="main">
-            <div class="main-container">
-                <section class="welcome section dark-section">
-                    <div class="welcome__container">
-                        <div class="welcome__text" id="welcomeText">
-                            <h2 class="welcome__title title">Welcome <br>to the louvre</h2>
-                            <p class="welcome__subtitle">From the castle to the museum</p>
-                            <a target="_blank" href="panoramas/1.html" class="welcome__button">Discover the Louvre</a>
-                        </div>
-                        <div class="welcome__slider" id="slider">
-                            <div class="slides" id="slides">
-                                <div class="slide slide-1 active"></div>
-                                <div class="slide slide-2"></div>
-                                <div class="slide slide-3"></div>
-                                <div class="slide slide-4"></div>
-                                <div class="slide slide-5"></div>
-                            </div>
-                            <div class="welcome__pagination">
-                                <div class="counter" id="counter">
-                                    <p class="slide-now" id="currentSlide">01</p>
-                                    <p class="slide-all">&nbsp; |&nbsp; 05</p>
-                                </div>
-                                <div class="squares" id="squares">
-                                    <span class="square active" id="square" data-index=0></span>
-                                    <span class="square" data-index=1></span>
-                                    <span class="square" data-index=2></span>
-                                    <span class="square" data-index=3></span>
-                                    <span class="square" data-index=4></span>
-                                </div>
-                                <div class="controls">
-                                    <button class="btn left" id="prev">&larr;</button>
-                                    <button class="btn right" id="next">&rarr;</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section class="section visiting" id="visiting">
-                    <div class="visiting__container">
-                        <h2 class="visiting__title title">Virtual tour</h2>
-                        <div class="cards">
-                            <a target="_blank" href="panoramas/2.html" class="card first-card">
-                                <img class="card__image" src="./assets/img/visiting/1.jpg" alt="Royal Palace"
-                                    width="440" height="285">
-                                <h3 class="card__title">Royal Palace</h3>
-                                <p class="card__subtitle">360° Virtual Tour</p>
-                                <p class="card__subsubtitle">Google Street Panorama View</p>
-                            </a>
-                            <a target="_blank" href="panoramas/3.html" class="card second-card">
-                                <img class="card__image" src="./assets/img/visiting/2.jpg" alt="Denon Wing" width="440"
-                                    height="285">
-                                <h3 class="card__title">Denon Wing</h3>
-                                <p class="card__subtitle">360° Virtual Tour</p>
-                                <p class="card__subsubtitle">Google Street Panorama View</p>
-                            </a>
-                            <a target="_blank" href="panoramas/4.html" class="card third-card">
-                                <img class="card__image" src="./assets/img/visiting/3.jpg" alt="Colonnade Perrault"
-                                    width="440" height="285">
-                                <h3 class="card__title">Colonnade Perrault</h3>
-                                <p class="card__subtitle">360° Virtual Tour</p>
-                                <p class="card__subsubtitle">Google Street Panorama View</p>
-                            </a>
-                            <a target="_blank" href="panoramas/5.html" class="card fourth-card">
-                                <img class="card__image" src="./assets/img/visiting/4.jpg" alt="Greek hall" width="440"
-                                    height="285">
-                                <h3 class="card__title">Greek hall</h3>
-                                <p class="card__subtitle">360° Virtual Tour</p>
-                                <p class="card__subsubtitle">Google Street Panorama View</p>
-                            </a>
-                            <a target="_blank" href="panoramas/6.html" class="card fifth-card">
-                                <img class="card__image" src="./assets/img/visiting/5.jpg" alt="Mona Lisa" width="440"
-                                    height="285">
-                                <h3 class="card__title">Mona Lisa</h3>
-                                <p class="card__subtitle">360° Virtual Tour</p>
-                                <p class="card__subsubtitle">Google Street Panorama View</p>
-                            </a>
-                            <a target="_blank" href="panoramas/7.html" class="card sixth-card">
-                                <img class="card__image" src="./assets/img/visiting/6.jpg" alt="Night Palace"
-                                    width="440" height="285">
-                                <h3 class="card__title">Night Palace</h3>
-                                <p class="card__subtitle">360° Virtual Tour</p>
-                                <p class="card__subsubtitle">Google Street Panorama View</p>
-                            </a>
-                        </div>
-                    </div>
-                </section>
-                <section class="section dark-section explore" id="explore">
-                    <div class="explore__container">
-                        <div class="explore__text">
-                            <h2 class="explore__title title">Picture explore</h2>
-                            <p class="explore__paragraph explore__paragraph_one">Las Meninas is a 1656 painting by Diego
-                                Velázquez,
-                                the leading artist of the Spanish Golden Age.</p>
-                            <p class="explore__paragraph explore__paragraph_two">It was cleaned in 1984 to remove a
-                                <span class="explore__text_span">"yellow veil"</span> of
-                                dust that had gathered since the previous restoration in the 19th century.</p>
-                            <p class="explore__paragraph explore__paragraph_three">The cleaning provoked furious
-                                protests, not because
-                                the picture had been damaged in any way, but because it looked different.</p>
-                        </div>
-                        <div class="img-comp-container">
-                            <div class="img-comp-img">
-                                <img src="./assets/img/explore-slider/after.jpg" width="720" height="700"
-                                    alt="Before image">
-                            </div>
-                            <div class="img-comp-img img-comp-overlay">
-                                <img src="./assets/img/explore-slider/before.jpg" width="720" height="700"
-                                    alt="After image">
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section class="section video-section video" id="video">
-                    <div class="video__container">
-                        <div class="video__text">
-                            <h2 class="video__title title">Video journey</h2>
-                            <p class="video__subtitle">Enter and visit one of the most famous museums in the world and
-                                enjoy masterpieces such as Mona Lisa or Hammurabi's Code</p>
-                        </div>
-                        <div class="video-player__container">
-                            <div class="player">
-                                <img class="player__image" src="./assets/video/poster0.jpg" width="1440" height="650"
-                                    alt="Player image">
-                                <button class="player__play-circle"></button>
-                                <div class="player__controls">
-                                    <button class="player__button player__play-icon"></button>
-                                    <input type="range" class="progress player__element" id="progressInput" min="0"
-                                        max="1" step="0.05" value="1">
-                                    <button
-                                        class="player__volume player__button player__volume_icon player__element"></button>
-                                    <input type="range" name="volume" class="player__slider volume player__element"
-                                        min="0" max="1" step="0.05" value="1" id="volumeInput">
-                                    <button class="fullscreen player__element player__button"></button>
-                                </div>
-                            </div>
-                            <div class="player__slider" id="playerSlider">
-                                <div class="player__slides">
-                                    <div class="player__slide player__slide-1 active">
-                                        <iframe width="452" height="254" loading="lazy"
-                                            src="https://www.youtube.com/embed/aWmJ5DgyWPI?modestbranding=1"
-                                            title="YouTube video player"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                            allowfullscreen>
-                                        </iframe>
-                                    </div>
-                                    <div class="player__slide player__slide-2">
-                                        <iframe width="452" height="254" loading="lazy"
-                                            src="https://www.youtube.com/embed/Vi5D6FKhRmo?controls=0?modestbranding=1"
-                                            title="YouTube video player"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                            allowfullscreen>
-                                        </iframe>
-                                    </div>
-                                    <div class="player__slide player__slide-3">
-                                        <iframe width="452" height="254" loading="lazy"
-                                            src="https://www.youtube.com/embed/NOhDysLnTvY?controls=0?modestbranding=1"
-                                            title="YouTube video player"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                            allowfullscreen>
-                                        </iframe>
-                                    </div>
-                                </div>
-                                <div class="player__slider_pagination">
-                                    <button class="player__slider_button slider-left">
-                                    </button>
-                                    <span class="dot active" data-index=0></span>
-                                    <span class="dot" data-index=1></span>
-                                    <span class="dot" data-index=2></span>
-                                    <span class="dot" data-index=3></span>
-                                    <span class="dot" data-index=4></span>
-                                    <button class="player__slider_button slider-right">
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section class="section dark-section gallery" id="gallery">
-                    <div class="gallery__container">
-                        <h2 class="gallery__title title">Art gallery</h2>
-                        <div class="gallery__picture">
-                            <div class="gallery__picture_container">
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section class="section tickets" id="tickets">
-                    <div class="tickets__container">
-                        <h2 class="tickets__title title">Buy tickets</h2>
-                        <div class="tickets__main">
-                            <div class="ticket__images">
-                                <img class="ticket__image" src="./assets/img/tickets.jpg" alt="painting">
-                            </div>
-                            <div class="tickets__input_container">
-                                <div class="ticket__type">
-                                    <h4 class="ticket__type_title">Ticket Type</h4>
-                                    <form class="ticket__form">
-                                        <label id="label" class="label"><input type="radio" name="type" class="input"
-                                                id="radioPerm" value="20">Permanent exhibition</label><br></label>
-                                        <label id="label2"><input type="radio" name="type" value="25" class="input"
-                                                id="radioTemp">Temporary exhibition<br></label>
-                                        <label id="label3"><input type="radio" name="type" value="40" class="input"
-                                                id="radioComb">Combined Admission</label>
-                                    </form>
-                                </div>
-                                <div class="ticket__amount">
-                                    <h4 class="ticket__amount_title">Amount</h4>
-                                    <p class="input__basic">Basic 18+</p>
-                                    <div class="number-input">
-                                        <button class="input__minus inpbtn" id="minus"></button>
-                                        <input type="number" step="1" placeholder="0" id="input-bas" min="0" max="20"
-                                            class="ticket__input" value="0">
-                                        <button class="input__plus inpbtn" id="plus"></button>
-                                    </div>
-                                    <p class="input__senior">Senior 65+</p>
-                                    <div class="number-input">
-                                        <button class="input__minus inpbtn1" id="minus1"></button>
-                                        <input type="number" step="1" placeholder="0" id="input-sen" min="0" max="20"
-                                            class="ticket__input" value="0">
-                                        <button class="input__plus inpbtn1" id="plus1"></button>
-                                    </div>
-                                    <div class="input__total-price">
-                                        <p class="input__total" id="inputTotal">Total: €</p>
-                                        <p class="input__price" id="inputPrice"> 0</p>
-                                    </div>
-                                    <button class="input__button" id="clickBtn">Buy Now</button>
-                                    <div id="popup" class="popup">
-                                        <div class="popup-container" id="popupCont">
-
-                                            <div class="popup__main">
-                                                <div class="popup__left">
-                                                    <div class="popup__logo"></div>
-                                                    <h3 class="popup__title">Booking tickets</h3>
-                                                    <h4 class="popup__subtitle">Tour to Louvre</h4>
-                                                    <form class="popup__form">
-                                                        <input type="date" class="popup__date" id="popupDate"
-                                                            onchange="handler();">
-                                                        <select class="popup__time" id="popupTime"  onchange="handler2();">
-                                                            <option value="" disabled selected>Time</option>
-                                                            <option value="9:00">9:00</option>
-                                                            <option value="9:30">9:30</option>
-                                                            <option value="10:00">10:00</option>
-                                                            <option value="10:30">10:30</option>
-                                                            <option value="11:00">11:00</option>
-                                                            <option value="11:30">11:30</option>
-                                                            <option value="12:00">12:00</option>
-                                                            <option value="12:30">12:30</option>
-                                                            <option value="13:00">13:00</option>
-                                                            <option value="13:30">13:30</option>
-                                                            <option value="14:00">14:00</option>
-                                                            <option value="14:30">14:30</option>
-                                                            <option value="15:00">15:00</option>
-                                                            <option value="15:30">15:30</option>
-                                                            <option value="16:00">16:00</option>
-                                                            <option value="16:30">16:30</option>
-                                                            <option value="17:00">17:00</option>
-                                                            <option value="17:30">17:30</option>
-                                                            <option value="18:00">18:00</option>
-                                                        </select>
-                                                        <i class="pseudo__time"></i>
-                                                        <input type="text" class="popup__name" placeholder="Name">
-                                                        <input type="email" class="popup__email" placeholder="E-mail">
-                                                        <input type="tel" class="popup__phone" placeholder="Phone">
-                                                        <select class="popup__type" id="popupType">
-                                                            <!-- <option value="" class="popup__option" disabled selected> -->
-                                                            <!-- Ticket Type -->
-                                                            </option>
-                                                            <option>Permanent exhibition</option>
-                                                            <option>Temporary exhibition</option>
-                                                            <option>Combined Admission</option>
-                                                        </select>
-                                                        <i class="pseudo"></i>
-                                                    </form>
-                                                    <div class="popup__total">
-                                                        <h4 class="total__entry">Entry Ticket</h4>
-                                                        <div class="total__basic">
-                                                            <p class="total__basic_text">Basic 18+ (20 €)</p>
-                                                            <div class="total__basic_input">
-                                                                <button class="basic__minus" id="basicMinus"></button>
-                                                                <input class="basic__input" type="number" step="1"
-                                                                    placeholder=" 2" id="basicInput" min="1">
-                                                                <button class="basic__plus" id="basicPlus"></button>
-                                                            </div>
-                                                        </div>
-                                                        <div class="total__senior">
-                                                            <p class="total__senior_text">Senior 65+ (10 €)</p>
-                                                            <div class="total__senior_input">
-                                                                <button class="senior__minus" id="seniorMinus"></button>
-                                                                <input class="senior__input" type="number" step="1"
-                                                                    placeholder=" 2" id="seniorInput" min="1">
-                                                                <button class="senior__plus" id="seniorPlus"></button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="popup-right">
-                                                    <div class="payment__top">
-                                                        <div class="payment__text">
-                                                            <h3 class="payment__title">Overview</h3>
-                                                            <h4 class="payment__subtitle">Tour to Louvre</h4>
-                                                            <p class="payment__date" id="paymentDate">Friday, August 19
-                                                            </p>
-                                                            <p class="payment__time" id="paymentTime">16 : 30</p>
-                                                            <p class="payment__type">Temporary exhibition</p>
-                                                        </div>
-                                                        <div class="payment__image">
-                                                            <img src="./assets/img/payment.jpg" alt="Louvre"
-                                                                class="payment__img">
-                                                        </div>
-                                                    </div>
-                                                    <div class="payment__amount">
-                                                        <div class="payment__amount_one">
-                                                            <div class="payment__amount_left">
-                                                                <span class="payment__number"
-                                                                    id="paymentNumber">2</span>
-                                                                <p class="payment__total">Basic (20 €)</p>
-                                                            </div>
-                                                            <p class="payment__sum">40 €</p>
-
-                                                        </div>
-                                                        <div class="payment__amount_two">
-                                                            <div class="payment__amount_left left">
-                                                                <span class="payment__number"
-                                                                    id="paymentNumber2">2</span>
-                                                                <p class="payment__total">Senior (10 €)</p>
-                                                            </div>
-                                                            <p class="payment__sum sum-left">20 €</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="payment__bottom">
-                                                        <div class="total__sum">
-                                                            <p class="total__text">Total:</p>
-                                                            <p class="total__number" id="totalNumber">60 €</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="credit__card">
-                                                        <div class="card__back">
-                                                            <div class="card__black"></div>
-                                                            <p class="card__cvc">CVC/CVV</p>
-                                                            <input class="cvc__input" type="number">
-                                                            <p class="card__last">The last<br>3 or 4 digits<br>on
-                                                                back<br>of the
-                                                                card</p>
-                                                        </div>
-                                                        <div class="card__front">
-                                                            <div class="card__front_top">
-                                                                <div class="card__numbers">
-                                                                    <p class="card__number">Card number</p>
-                                                                    <input type="number" class="card__number_input">
-                                                                    <p class="card__date">Expiration date</p>
-                                                                    <select class="card__month">
-                                                                        <option>03</option>
-                                                                    </select>
-                                                                    <select class="card__year">
-                                                                        <option>2024</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="card__images">
-                                                                    <img class="card__visa" src="./assets/svg/visa.svg"
-                                                                        alt="visa">
-                                                                    <img class="card__mastercard"
-                                                                        src="./assets/svg/mastercard.svg"
-                                                                        alt="master card">
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="card__name">
-                                                                <p class="card__name_text">Cardholder name</p>
-                                                                <input type="text" class="card__name_input">
-                                                            </div>
-                                                        </div>
-
-                                                        <button class="book__button" id="bookBtn">Book</button>
-                                                    </div>
-                                                </div>
-                                                <div class="close-popup" id="closeBtn"><a href="#"></a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </section>
-                <div class="parallax">
-                </div>
-                <section class="section contacts" id="contacts">
-                    <div class="contacts__container">
-                        <h2 class="contacts__title title">Contacts</h2>
-                        <div class="contacts__main">
-                            <div class="contacts__text">
-                                <p class="contacts__place">Palais Royal<br> Musee du Louvre</p>
-                                <p class="contacts__adress">address: 75001 Paris, France</p>
-                                <p class="contacts__phone"><a href="tel:+330140205050" class="contacts__phone_a">phone:
-                                        +33(0) 1 40 20 50 50</a></p>
-                                <p class="contacts__email"><a href="mailto:info@louvre.fr"
-                                        class="contacts__email_a">mail: info@louvre.fr</a></p>
-                            </div>
-                            <div class="contacts__map">
-                                <img class="contacts__map_image" src="./assets/img/map.jpg" alt="map">
-                            </div>
-                        </div>
-                    </div>
-                </section>
+        </div>
+        <div class="weather">
+            <input type="text" class="city" value="Minsk" />
+            <i class="weather-icon owf"></i>
+            <div class="weather-error"></div>
+            <div class="description-container">
+                <span class="temperature"></span>
+                <span class="weather-description"></span>
             </div>
-        </main>
-        <footer class="footer">
-            <div class="footer__container">
-                <div class="footer__top">
-                    <div class="footer__logo">
-                        <div class="footer__logo_image"></div>
-                        <h3 class="footer__title">Louvre</h3>
-                    </div>
-                    <nav class="footer__nav">
-                        <ul class="footer__list">
-                            <li class="footer__item">
-                                <a href="#visiting">Visiting</a>
-                            </li>
-                            <li class="footer__item">
-                                <a href="#explore">Explore</a>
-                            </li>
-                            <li class="footer__item">
-                                <a href="#video">Video</a>
-                            </li>
-                            <li class="footer__item">
-                                <a href="#gallery">Gallery</a>
-                            </li>
-                            <li class="footer__item">
-                                <a href="#tickets">Tickets</a>
-                            </li>
-                            <li class="footer__item">
-                                <a href="#contacts">Contacts</a>
-                            </li>
-                        </ul>
-                    </nav>
-                    <div class="footer__soc">
-                        <ul class="footer__soc_list">
-                            <li class="footer__soc_item">
-                                <a href="https://www.youtube.com/user/louvre" class="soc__link yt" target="_blank"></a>
-                            </li>
-                            <li class="footer__soc_item">
-                                <a href="https://www.instagram.com/museelouvre/" class="soc__link inst"
-                                    target="_blank"></a>
-                            </li>
-                            <li class="footer__soc_item">
-                                <a href="https://www.facebook.com/museedulouvre" class="soc__link fb"
-                                    target="_blank"></a>
-                            </li>
-                            <li class="footer__soc_item">
-                                <a href="http://twitter.com/museelouvre" class="soc__link twt" target="_blank"></a>
-                            </li>
-                            <li class="footer__soc_item">
-                                <a href="https://www.pinterest.fr/museedulouvre/" class="soc__link pint"
-                                    target="_blank"></a>
-                            </li>
-                        </ul>
-                    </div>
-
+            <div class="wind"></div>
+            <div class="humidity"></div>
+        </div>
+    </header>
+    <main class="main">
+        <div class="slider-icons">
+            <button class="slide-prev slider-icon"></button>
+            <button class="slide-next slider-icon"></button>
+        </div>
+        <time class="time"></time>
+        <date class="date"></date>
+        <div class="greeting-container">
+            <span class="greeting"></span>
+            <input type="text" class="name" id="userName" placeholder="[Enter name]" />
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="settings" id="settings">
+            <i class="fas fa-cogs"></i>
+        </div>
+        <div class="popup" id="popup">
+            <button class="dropdown-btn">Language
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                <div class="english"  id="english">
+                    <input type="radio" checked id="eng" value="english" name="language">
+                    <label for="eng">English</label>
                 </div>
-
-                <div class="footer__bottom">
-                    <time class="bottom__time" datetime="2021">© 2021</time>
-                    <p class="bottom__text">The Rolling Scopes School</p>
-                    <p class="bottom__user">Ravgusha</p>
+                <div class="russian" id="russian" >
+                    <input type="radio" id="rus" value="russian" name="language" >
+                    <label for="rus" >Russian</label>
                 </div>
             </div>
-        </footer>
-    </div>
-    <script src="./js/script.js"></script>
-    <script src="./js/gallery.js"></script>
-    <script src="./js/tickets.js"></script>
+        </div>
+        <div class="footer-quote">
+            <button class="change-quote"></button>
+            <div>
+                <div class="quote"></div>
+                <div class="author"></div>
+            </div>
+        </div>
+
+    </footer>
+    <script src="js/script.js"></script>
+    <script src="https://kit.fontawesome.com/a062562745.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

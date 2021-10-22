@@ -24,6 +24,7 @@ body {
     background-position: center;
     background-color: rgba(0, 0, 0, 0.5);
     background-size: cover;
+    /* overflow: hidden; */
 }
 
 
@@ -246,15 +247,44 @@ body {
     opacity: .6;
 }
 
+
 .footer {
+    display: flex;
+    align-items: flex-end;
+}
+
+.settings {
+    margin: 0 0 20px 20px;
+    cursor: pointer;
+    opacity: .5;
+    transition: transform 0.5s linear;
+
+}
+
+.settings.toggle {
+    opacity: 1;
+    transform: rotate(38deg);
+    transition: transform 0.5s linear;
+}
+
+.english,
+.russian {
+    padding: 10px 0;
+}
+
+.dropdown-container label {
+    padding-left: 5px;
+}
+
+.footer-quote {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    width: 100%;
+    width: 96%;
     height: 30vh;
     min-height: 160px;
-    padding: 20px;
+    padding: 20px 0;
 }
 
 .change-quote {
@@ -396,6 +426,136 @@ body {
     padding-right: 10px;
 }
 
+
+/* SETTINGS POPUP */
+
+
+.popup {
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    /* padding-top: 10px; */
+    /* height: 100%; */
+    width: 158px;
+    /* position: fixed; */
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: white;
+    overflow-x: hidden;
+    border-radius: 5%;
+    opacity: 0;
+    height: max-content;
+    margin: 0 0 20px 20px;
+
+}
+
+.popup.active {
+    animation: fadeInFromNone 2s ease-out;
+    opacity: 1;
+
+
+}
+
+@keyframes fadeInFromNone {
+    0% {
+        opacity: 0;
+    }
+
+    1% {
+        opacity: 0;
+    }
+
+    100% {
+        display: block;
+        opacity: 1;
+    }
+}
+
+/* Style the popup links and the dropdown button */
+.popup input,
+.dropdown-btn {
+    font-family: 'Arial-MT';
+    padding: 16px 0 16px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    display: block;
+    border: none;
+    background: none;
+    /* width: 100%; */
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+}
+
+.dropdown-btn {
+    width: 100%;
+}
+
+.popup input {
+    display: inline;
+}
+
+/* .popup label {
+    font-family: 'Arial-MT';
+    font-weight: 300;
+} */
+
+.english,
+.russian {
+    display: flex;
+}
+
+/* On mouse-over */
+.popup input:hover,
+.dropdown-btn:hover {
+    color: black;
+}
+
+/* Main content */
+
+/* Add an active class to the active dropdown button */
+.dropdown-btn.active {
+    background-color: #0075ff;
+    ;
+    color: black;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+    display: none;
+    background-color: #262626;
+    padding-left: 8px;
+    animation: fadeInFromNone 1s ease-in;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+    float: right;
+    padding-right: 8px;
+    top: 4px;
+    position: relative;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media (max-width: 768px) {
     .time {
         min-height: 80px;
@@ -416,4 +576,3 @@ body {
         padding: 5px;
     }
 }
-
