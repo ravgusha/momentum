@@ -95,36 +95,38 @@
             <i class="fas fa-cogs"></i>
         </div>
         <div class="popup" id="popup">
-            <button class="dropdown-btn">Language
+            <button class="dropdown-btn" id="set-lang">Language
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-container">
                 <div class="english" id="english">
                     <input type="radio" checked id="eng" value="english" name="language">
-                    <label for="eng">English</label>
+                    <label for="eng" id="engText">English</label>
                 </div>
                 <div class="russian" id="russian">
                     <input type="radio" id="rus" value="russian" name="language">
-                    <label for="rus">Russian</label>
+                    <label for="rus" id="rusText">Russian</label>
                 </div>
             </div>
 
-            <button class="dropdown-btn">Slide source
+            <button class="dropdown-btn" id="set-src">Slide source
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-container">
                 <div class="github" id="github">
                     <input type="radio" checked id="gh" value="gh" name="imageSource">
-                    <label for="gh">Gh</label>
+                    <label for="gh">GitHub</label>
                 </div>
                 <div class="unsplash" id="unsplash">
                     <input type="radio" id="us" value="us" name="imageSource">
                     <label for="us">Unsplash</label>
                 </div>
-                <div class="flickr" id="flickr" >
+                <input type="text" placeholder="Enter tags" id="unTags" class="unTags">
+                <div class="flickr" id="flickr">
                     <input type="radio" id="fl" value="fl" name="imageSource">
                     <label for="fl">Flickr</label>
                 </div>
+                <input type="text" placeholder="Enter tags" id="flTags" class="flTags">
             </div>
         </div>
         <div class="footer-quote">
@@ -134,7 +136,17 @@
                 <div class="author"></div>
             </div>
         </div>
-
+        <div class="todo-block">
+            <div class="todo-container" id="todoCont">
+                <form id="form">
+                    <input id="input" type="text" placeholder="Add to-do...">
+                    <ul id="list-container">
+                    </ul>
+                </form>
+                <div class="text">Left click to done.<br>Right click to delete.</div>
+            </div>
+            <button class="todo" id="todo">To-do</button>
+        </div>
     </footer>
     <script src="js/script.js"></script>
     <script src="https://kit.fontawesome.com/a062562745.js" crossorigin="anonymous"></script>

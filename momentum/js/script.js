@@ -120,6 +120,8 @@ function getGreetings(lang) {
 
 getGreetings('en');
 
+
+
 let engLang = document.getElementById('english');
 let rusLang = document.getElementById('russian');
 
@@ -129,6 +131,11 @@ engLang.addEventListener('click', () => {
     getWeather('en');
     getTime('en');
     getQuotes();
+    name.placeholder = '[Enter name]';
+    document.getElementById('set-lang').innerHTML = 'Language <i class="fa fa-caret-down"></i>';
+    document.getElementById('set-src').innerHTML = 'Image source <i class="fa fa-caret-down"></i>';
+    document.getElementById('engText').innerText = 'English';
+    document.getElementById('rusText').innerText = 'Russian';
 })
 
 rusLang.addEventListener('click', () => {
@@ -137,6 +144,12 @@ rusLang.addEventListener('click', () => {
     getWeather('ru');
     getTime('ru');
     getQuotes();
+    name.placeholder = '[Введите имя]';
+    document.getElementById('set-lang').innerHTML = 'Язык <i class="fa fa-caret-down"></i>';
+    document.getElementById('set-src').innerHTML = 'Источник фото <i class="fa fa-caret-down"></i>';
+    document.getElementById('engText').innerText = 'Английский';
+    document.getElementById('rusText').innerText = 'Русский';
+    city.value = 'Минск';
 });
 
 
@@ -150,7 +163,7 @@ function saveName() {
 
 userName.value = localStorage.getItem('name');
 
-// // GETTING RANDOM NUMBER 
+// GETTING RANDOM NUMBER 
 
 function randomIntFromInterval(min, max) { // min and max included 
     return Math.floor(Math.random() * (max - min + 1) + min)
@@ -181,11 +194,25 @@ function getBackground() {
 }
 
 getBackground();
+let unTags = document.getElementById('unTags');
+
+
+let flTags = document.getElementById('flTags');
+
+
+
 
 async function getLinkToImageUn() {
     imageSource = 'unsplash';
+    unTags.style.display = 'block';
+    flTags.style.display = 'none';
 
-    const url = 'https://api.unsplash.com/photos/random?orientation=landscape&query=' + timeOfDay + '&&client_id=vGmkWjGIedfDnRn032W3tNs7jr__vE10V-mqkyE-0mQ';
+
+    unTagsText = unTags.value;
+    console.log(unTagsText)
+
+    const url = 'https://api.unsplash.com/photos/random?orientation=landscape&query=' + timeOfDay + ',' + unTagsText +'&&client_id=vGmkWjGIedfDnRn032W3tNs7jr__vE10V-mqkyE-0mQ';
+    console.log(url)
     const res = await fetch(url);
     const data = await res.json();
     const dataUrl = data.urls.regular;
@@ -201,6 +228,10 @@ async function getLinkToImageUn() {
 
 async function getLinkToImageFl() {
     imageSource = 'flickr';
+    flTags.style.display = 'block';
+    unTags.style.display = 'none';
+
+    flTagsText = flTags.value;
     let url;
 
     random = randomIntFromInterval(1, 20);
@@ -215,6 +246,8 @@ async function getLinkToImageFl() {
         url = 'https://www.flickr.com/services/rest/?method=flickr.galleries.getPhotos&api_key=5135b594508a0a929070451a97e1c491&gallery_id=72157720069530982&extras=url_h&format=json&nojsoncallback=1';
     }
 
+
+    console.log(url)
     const res = await fetch(url);
     const data = await res.json();
     const dataUrl = data.photos.photo[random].url_h;
@@ -228,17 +261,47 @@ async function getLinkToImageFl() {
     })
 }
 
+async function getLinkToImageSearchFl() {
+    imageSource = 'flickr';
+    flTags.style.display = 'block';
+    unTags.style.display = 'none';
+
+    flTagsText = flTags.value;
+    let url;
+
+    random = randomIntFromInterval(1, 5);
+
+   url = 'https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=5135b594508a0a929070451a97e1c491&tags=' + timeOfDay + ',' + flTagsText + '&tag_mode=all&extras=url_l&format=json&nojsoncallback=1'
+
+
+    console.log(url)
+    const res = await fetch(url);
+    const data = await res.json();
+    const dataUrl = data.photos.photo[random].url_l;
+    console.log(dataUrl);
+
+    const img = new Image();
+    img.src = dataUrl;
+
+    img.addEventListener('load', () => {
+        body.style.backgroundImage = 'url(' + dataUrl + ')';
+    })
+}
 
 
 let gh = document.getElementById('github');
 let unsplash = document.getElementById('unsplash');
 let flickr = document.getElementById('flickr');
 
-gh.addEventListener('click', getBackground)
+gh.addEventListener('click', getBackground);
 
 unsplash.addEventListener('click', getLinkToImageUn);
 
 flickr.addEventListener('click', getLinkToImageFl);
+
+unTags.addEventListener ('input', getLinkToImageUn);
+flTags.addEventListener ('input', getLinkToImageSearchFl);
+
 
 
 
@@ -302,6 +365,8 @@ slidePrev.addEventListener('click', () => {
 
 let city = document.querySelector('.city');
 
+
+
 city.addEventListener('input', saveCity);
 
 function saveCity() {
@@ -310,7 +375,7 @@ function saveCity() {
 }
 
 city.value = localStorage.getItem('city');
-
+// console.log(city.value)
 
 // GET WEATHER
 
@@ -325,6 +390,7 @@ async function getWeather(lang) {
     let language = lang;
 
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=${language}&appid=88986004c8054ae5c4021fc0e275eb5f&units=metric`;
+    console.log(url)
 
     const res = await fetch(url);
     const data = await res.json();
@@ -671,4 +737,48 @@ for (i = 0; i < dropdown.length; i++) {
             dropdownContent.style.display = "block";
         }
     });
+}
+
+// TO-DO
+
+const todo = document.getElementById('todo');
+const todoCont = document.getElementById('todoCont');
+const input = document.getElementById('input');
+const listCont = document.getElementById('list-container');
+const form = document.getElementById('form');
+const li = Array.from(document.getElementsByTagName('li'));
+
+
+todo.addEventListener ('click', () => {
+    todoCont.classList.toggle('active');
+    todo.classList.toggle('active');
+})
+
+input.focus();
+
+form.addEventListener ('submit', addToDo)
+
+function addToDo(e) {
+    e.preventDefault();
+
+    const newToDo = document.createElement("li");
+
+    if (input.value !== '') {                      // добавить задачу
+    newToDo.innerText = input.value;
+    listCont.appendChild(newToDo);
+    input.value = "";
+    
+
+    newToDo.addEventListener('click', doneTodo); // вычеркнуть задачу
+    function doneTodo() {
+        newToDo.classList.toggle('done');
+    }
+
+
+    newToDo.addEventListener('contextmenu', deleteTodo); // удалить задачу
+    function deleteTodo(e) {
+        e.preventDefault();
+        listCont.removeChild(newToDo);
+    }
+}
 }
