@@ -14,12 +14,13 @@ let slidePrev = document.querySelector('.slide-prev');
 let weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 let weekdaysRus = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"]
 let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-let monthsRus = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь','Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь']
+let monthsRus = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря']
 
 let timeOfDay;
 
-function getTime(lang) {
-    let language = lang
+let language = 'en';
+
+function getTime() {
     let time = new Date();
 
     let hours = time.getHours();
@@ -29,7 +30,7 @@ function getTime(lang) {
     let date = time.getDate();
 
     let month = months[time.getMonth()];
-    
+
     // let year = time.getFullYear();
 
     if (date < 10) {
@@ -52,7 +53,7 @@ function getTime(lang) {
         seconds = '0' + seconds;
     }
     timeEl.innerHTML = `${hours}:${minutes}:${seconds}`;
-    
+
 
     if (language == 'en') {
         let weekday = weekdays[time.getDay()];
@@ -69,7 +70,7 @@ function getTime(lang) {
 }
 
 getTime('en');
-setInterval(getTime, 1000);
+setInterval(getTime(), 1000);
 
 // LANGUAGE SETTINGS
 
@@ -109,7 +110,7 @@ function getGreetings(lang) {
     }
     if (hours >= 18) {
         if (lang == 'en') {
-            greeting.innerHTML = greetingTranslation.en[0];
+            greeting.innerHTML = greetingTranslation.en[3];
         } else if (lang == 'ru') {
             greeting.innerHTML = greetingTranslation.ru[3];
         }
@@ -121,19 +122,21 @@ getGreetings('en');
 
 let engLang = document.getElementById('english');
 let rusLang = document.getElementById('russian');
-console.log(rusLang)
 
 engLang.addEventListener('click', () => {
-        getGreetings('en');
-        getWeather('en');
-        getTime('en');
-
+    language = 'en';
+    getGreetings('en');
+    getWeather('en');
+    getTime('en');
+    getQuotes();
 })
 
 rusLang.addEventListener('click', () => {
+    language = 'ru';
     getGreetings('ru');
     getWeather('ru');
     getTime('ru');
+    getQuotes();
 });
 
 
@@ -147,18 +150,20 @@ function saveName() {
 
 userName.value = localStorage.getItem('name');
 
-// GETTING RANDOM NUMBER 
+// // GETTING RANDOM NUMBER 
 
 function randomIntFromInterval(min, max) { // min and max included 
     return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
-// GETTING BACKGROUND IMAGE 
+// // GETTING BACKGROUND IMAGE 
 
 let random;
+let imageSource;
 
 
 function getBackground() {
+    imageSource = 'gh';
 
     random = randomIntFromInterval(1, 20)
     if (random < 10) {
@@ -177,6 +182,67 @@ function getBackground() {
 
 getBackground();
 
+async function getLinkToImageUn() {
+    imageSource = 'unsplash';
+
+    const url = 'https://api.unsplash.com/photos/random?orientation=landscape&query=' + timeOfDay + '&&client_id=vGmkWjGIedfDnRn032W3tNs7jr__vE10V-mqkyE-0mQ';
+    const res = await fetch(url);
+    const data = await res.json();
+    const dataUrl = data.urls.regular;
+    console.log('url(' + dataUrl + ')');
+
+    const img = new Image();
+    img.src = dataUrl;
+
+    img.addEventListener('load', () => {
+        body.style.backgroundImage = 'url(' + dataUrl + ')';
+    })
+}
+
+async function getLinkToImageFl() {
+    imageSource = 'flickr';
+    let url;
+
+    random = randomIntFromInterval(1, 20);
+
+    if (timeOfDay == 'night') {
+        url = 'https://www.flickr.com/services/rest/?method=flickr.galleries.getPhotos&api_key=5135b594508a0a929070451a97e1c491&gallery_id=72157720062587146&extras=url_h&format=json&nojsoncallback=1';
+    } else if (timeOfDay == 'evening') {
+        url = 'https://www.flickr.com/services/rest/?method=flickr.galleries.getPhotos&api_key=5135b594508a0a929070451a97e1c491&gallery_id=72157720111880160&extras=url_h&format=json&nojsoncallback=1';
+    } else if (timeOfDay == 'afternoon') {
+        url = 'https://www.flickr.com/services/rest/?method=flickr.galleries.getPhotos&api_key=5135b594508a0a929070451a97e1c491&gallery_id=72157720111881805&extras=url_h&format=json&nojsoncallback=1';
+    } else if (timeOfDay == 'morning') {
+        url = 'https://www.flickr.com/services/rest/?method=flickr.galleries.getPhotos&api_key=5135b594508a0a929070451a97e1c491&gallery_id=72157720069530982&extras=url_h&format=json&nojsoncallback=1';
+    }
+
+    const res = await fetch(url);
+    const data = await res.json();
+    const dataUrl = data.photos.photo[random].url_h;
+    console.log(dataUrl);
+
+    const img = new Image();
+    img.src = dataUrl;
+
+    img.addEventListener('load', () => {
+        body.style.backgroundImage = 'url(' + dataUrl + ')';
+    })
+}
+
+
+
+let gh = document.getElementById('github');
+let unsplash = document.getElementById('unsplash');
+let flickr = document.getElementById('flickr');
+
+gh.addEventListener('click', getBackground)
+
+unsplash.addEventListener('click', getLinkToImageUn);
+
+flickr.addEventListener('click', getLinkToImageFl);
+
+
+
+
 // SLIDING IMAGES
 
 slideNext.addEventListener('click', () => {
@@ -190,14 +256,19 @@ slideNext.addEventListener('click', () => {
         random = '01';
     }
 
-    let url = 'https://github.com/ravgusha/stage1-tasks/blob/assets/images/' + timeOfDay + '/' + random + '.webp?raw=true';
+    if (imageSource == 'gh') {
+        let url = 'https://github.com/ravgusha/stage1-tasks/blob/assets/images/' + timeOfDay + '/' + random + '.webp?raw=true';
+        const img = new Image();
+        img.src = url;
 
-    const img = new Image();
-    img.src = url;
-
-    img.addEventListener('load', () => {
-        body.style.backgroundImage = 'url(' + url + ')';
-    })
+        img.addEventListener('load', () => {
+            body.style.backgroundImage = 'url(' + url + ')';
+        })
+    } else if (imageSource == 'unsplash') {
+        getLinkToImageUn();
+    } else if (imageSource == 'flickr') {
+        getLinkToImageFl();
+    }
 
 });
 
@@ -210,13 +281,21 @@ slidePrev.addEventListener('click', () => {
     if (random == '00') {
         random = '20';
     }
-    let url = 'https://github.com/ravgusha/stage1-tasks/blob/assets/images/' + timeOfDay + '/' + random + '.webp?raw=true';
-    const img = new Image();
-    img.src = url;
 
-    img.addEventListener('load', () => {
-        body.style.backgroundImage = 'url(' + url + ')';
-    })
+    if (imageSource == 'gh') {
+        let url = 'https://github.com/ravgusha/stage1-tasks/blob/assets/images/' + timeOfDay + '/' + random + '.webp?raw=true';
+        const img = new Image();
+        img.src = url;
+
+        img.addEventListener('load', () => {
+            body.style.backgroundImage = 'url(' + url + ')';
+        })
+    } else if (imageSource == 'unsplash') {
+        getLinkToImageUn();
+
+    } else if (imageSource == 'flickr') {
+        getLinkToImageFl();
+    }
 });
 
 // CITY NAME SAVING
@@ -244,7 +323,7 @@ let humidity = document.querySelector('.humidity');
 
 async function getWeather(lang) {
     let language = lang;
-    console.log(language);
+
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=${language}&appid=88986004c8054ae5c4021fc0e275eb5f&units=metric`;
 
     const res = await fetch(url);
@@ -255,7 +334,7 @@ async function getWeather(lang) {
 
     weatherIcon.className = 'weather-icon owf';
     weatherIcon.classList.add(`owf-${data.weather[0].id}`);
-   
+
     temperature.textContent = `${temp}°C`;
     weatherDescription.textContent = data.weather[0].description;
 
@@ -274,10 +353,16 @@ document.addEventListener('DOMContentLoaded', getWeather('en'));
 
 let quote = document.querySelector('.quote');
 let author = document.querySelector('.author');
-let quoteBtn = document.querySelector('.change-quote')
+let quoteBtn = document.querySelector('.change-quote');
 
 async function getQuotes() {
-    const quotes = '../js/data/quotes-en.json';
+    let quotes;
+    // console.log(language)
+
+    // lang = language;
+    // console.log(lang)
+
+    quotes = `../js/data/quotes-${language}.json`;
 
     const res = await fetch(quotes);
     const data = await res.json();
@@ -287,9 +372,12 @@ async function getQuotes() {
     quote.textContent = `${data.quotes[randomQuote].quote}`;
     author.textContent = `${data.quotes[randomQuote].author}`;
 }
+
 document.addEventListener('DOMContentLoaded', getQuotes);
 
-quoteBtn.addEventListener('click', getQuotes);
+quoteBtn.addEventListener('click', () => {
+    getQuotes();
+})
 
 
 // PLAYER 
@@ -566,7 +654,7 @@ let settingsBtn = document.getElementById("settings");
 let settingPopup = document.getElementById("popup");
 
 settingsBtn.addEventListener('click', () => {
-    settingsBtn.classList.toggle('toggle');;
+    settingsBtn.classList.toggle('toggle');
     settingPopup.classList.toggle('active');
 })
 

@@ -268,8 +268,12 @@ body {
 }
 
 .english,
-.russian {
+.russian,
+.github,
+.unsplash,
+.flickr {
     padding: 10px 0;
+    display: flex;
 }
 
 .dropdown-container label {
@@ -504,10 +508,7 @@ body {
     font-weight: 300;
 } */
 
-.english,
-.russian {
-    display: flex;
-}
+
 
 /* On mouse-over */
 .popup input:hover,
