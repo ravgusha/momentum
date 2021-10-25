@@ -389,6 +389,7 @@ function saveCity() {
 }
 
 city.value = localStorage.getItem('city');
+
 // console.log(city.value)
 
 // GET WEATHER
@@ -402,6 +403,10 @@ let humidity = document.querySelector('.humidity');
 
 async function getWeather(lang) {
     let language = lang;
+
+    if (!city.value) {
+        city.value = "Minsk"
+    }
 
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=${language}&appid=88986004c8054ae5c4021fc0e275eb5f&units=metric`;
     console.log(url)
