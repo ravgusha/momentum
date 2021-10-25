@@ -63,14 +63,14 @@ function getTime() {
 
     if (language == 'ru') {
         let weekday = weekdaysRus[time.getDay()];
-        month = monthsRus[time.getMonth()];
+        month = monthsRus[time.getMonth()-1];
         dayEl.innerHTML = `${weekday}, ${date}  ${month}`;
     }
 
 }
 
 getTime('en');
-setInterval(getTime(), 1000);
+setInterval(getTime, 1000);
 
 // LANGUAGE SETTINGS
 
@@ -136,6 +136,13 @@ engLang.addEventListener('click', () => {
     document.getElementById('set-src').innerHTML = 'Image source <i class="fa fa-caret-down"></i>';
     document.getElementById('engText').innerText = 'English';
     document.getElementById('rusText').innerText = 'Russian';
+    document.getElementById('timeOff').innerText = 'Time';
+    document.getElementById('dateOff').innerText = 'Date';
+    document.getElementById('greetingOff').innerText = 'Greeting';
+    document.getElementById('quoteOff').innerText = 'Quote';
+    document.getElementById('weatherOff').innerText = 'Weather';
+    document.getElementById('playerOff').innerText = 'Player';
+    document.getElementById('todoOff').innerText = 'To-do';
 })
 
 rusLang.addEventListener('click', () => {
@@ -149,6 +156,13 @@ rusLang.addEventListener('click', () => {
     document.getElementById('set-src').innerHTML = 'Источник фото <i class="fa fa-caret-down"></i>';
     document.getElementById('engText').innerText = 'Английский';
     document.getElementById('rusText').innerText = 'Русский';
+    document.getElementById('timeOff').innerText = 'Время';
+    document.getElementById('dateOff').innerText = 'Дата';
+    document.getElementById('greetingOff').innerText = 'Приветствие';
+    document.getElementById('quoteOff').innerText = 'Цитата';
+    document.getElementById('weatherOff').innerText = 'Погода';
+    document.getElementById('playerOff').innerText = 'Плеер';
+    document.getElementById('todoOff').innerText = 'Задачи';
     city.value = 'Минск';
 });
 
@@ -211,7 +225,7 @@ async function getLinkToImageUn() {
     unTagsText = unTags.value;
     console.log(unTagsText)
 
-    const url = 'https://api.unsplash.com/photos/random?orientation=landscape&query=' + timeOfDay + ',' + unTagsText +'&&client_id=vGmkWjGIedfDnRn032W3tNs7jr__vE10V-mqkyE-0mQ';
+    const url = 'https://api.unsplash.com/photos/random?orientation=landscape&query=' + timeOfDay + ',' + unTagsText + '&&client_id=vGmkWjGIedfDnRn032W3tNs7jr__vE10V-mqkyE-0mQ';
     console.log(url)
     const res = await fetch(url);
     const data = await res.json();
@@ -271,7 +285,7 @@ async function getLinkToImageSearchFl() {
 
     random = randomIntFromInterval(1, 5);
 
-   url = 'https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=5135b594508a0a929070451a97e1c491&tags=' + timeOfDay + ',' + flTagsText + '&tag_mode=all&extras=url_l&format=json&nojsoncallback=1'
+    url = 'https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=5135b594508a0a929070451a97e1c491&tags=' + timeOfDay + ',' + flTagsText + '&tag_mode=all&extras=url_l&format=json&nojsoncallback=1'
 
 
     console.log(url)
@@ -299,8 +313,8 @@ unsplash.addEventListener('click', getLinkToImageUn);
 
 flickr.addEventListener('click', getLinkToImageFl);
 
-unTags.addEventListener ('input', getLinkToImageUn);
-flTags.addEventListener ('input', getLinkToImageSearchFl);
+unTags.addEventListener('input', getLinkToImageUn);
+flTags.addEventListener('input', getLinkToImageSearchFl);
 
 
 
@@ -371,7 +385,7 @@ city.addEventListener('input', saveCity);
 
 function saveCity() {
     localStorage.setItem('city', city.value);
-    getWeather();
+    getWeather(language);
 }
 
 city.value = localStorage.getItem('city');
@@ -395,8 +409,17 @@ async function getWeather(lang) {
     const res = await fetch(url);
     const data = await res.json();
 
+    if (!data.main) {
+        city.setAttribute('title', "City not found");
+        city.style.borderColor = 'red';
+    } else if (data.main){
+        city.setAttribute('title', "Valid city");
+        city.style.borderColor = 'white';
+    }
+
     temp = Math.floor(data.main.temp);
     wind = Math.floor(data.wind.speed);
+
 
     weatherIcon.className = 'weather-icon owf';
     weatherIcon.classList.add(`owf-${data.weather[0].id}`);
@@ -739,6 +762,27 @@ for (i = 0; i < dropdown.length; i++) {
     });
 }
 
+// HIDE BLOCKS
+
+function toggContent(content_id) {
+    const x = document.getElementById(content_id);
+    console.log(x)
+    x.classList.toggle('hide');
+    console.log(x.classList)
+}
+
+// SAVE SETTINGS AFTER REFRESH
+
+getElementById('russian').addEventListener('click', saveLang);
+getElementById('english').addEventListener('click', saveLang);
+
+function saveLang() {
+    localStorage.setItem('lang', getElementById('russian').checked);
+}
+
+getElementById('russian').checked = localStorage.getItem('lang');
+
+
 // TO-DO
 
 const todo = document.getElementById('todo');
@@ -749,36 +793,36 @@ const form = document.getElementById('form');
 const li = Array.from(document.getElementsByTagName('li'));
 
 
-todo.addEventListener ('click', () => {
+todo.addEventListener('click', () => {
     todoCont.classList.toggle('active');
     todo.classList.toggle('active');
 })
 
 input.focus();
 
-form.addEventListener ('submit', addToDo)
+form.addEventListener('submit', addToDo)
 
 function addToDo(e) {
     e.preventDefault();
 
     const newToDo = document.createElement("li");
 
-    if (input.value !== '') {                      // добавить задачу
-    newToDo.innerText = input.value;
-    listCont.appendChild(newToDo);
-    input.value = "";
-    
+    if (input.value !== '') { // добавить задачу
+        newToDo.innerText = input.value;
+        listCont.appendChild(newToDo);
+        input.value = "";
 
-    newToDo.addEventListener('click', doneTodo); // вычеркнуть задачу
-    function doneTodo() {
-        newToDo.classList.toggle('done');
+
+        newToDo.addEventListener('click', doneTodo); // вычеркнуть задачу
+        function doneTodo() {
+            newToDo.classList.toggle('done');
+        }
+
+
+        newToDo.addEventListener('contextmenu', deleteTodo); // удалить задачу
+        function deleteTodo(e) {
+            e.preventDefault();
+            listCont.removeChild(newToDo);
+        }
     }
-
-
-    newToDo.addEventListener('contextmenu', deleteTodo); // удалить задачу
-    function deleteTodo(e) {
-        e.preventDefault();
-        listCont.removeChild(newToDo);
-    }
-}
 }

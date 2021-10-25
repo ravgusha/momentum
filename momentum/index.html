@@ -12,7 +12,7 @@
 
 <body id="body">
     <header class="header">
-        <div class="player">
+        <div class="player" id="player">
             <audio id="myAudio" ontimeupdate="onTimeUpdate()">
                 <source id="source-audio" src="" type="audio/mpeg">
                 Your browser does not support the audio element.
@@ -66,7 +66,7 @@
                 <div class="playlist-ctn"></div>
             </div>
         </div>
-        <div class="weather">
+        <div class="weather" id="weather">
             <input type="text" class="city" value="Minsk" />
             <i class="weather-icon owf"></i>
             <div class="weather-error"></div>
@@ -83,9 +83,9 @@
             <button class="slide-prev slider-icon"></button>
             <button class="slide-next slider-icon"></button>
         </div>
-        <time class="time"></time>
-        <date class="date"></date>
-        <div class="greeting-container">
+        <time class="time" id="time"></time>
+        <date class="date" id="date"></date>
+        <div class="greeting-container" id="greetingCont">
             <span class="greeting"></span>
             <input type="text" class="name" id="userName" placeholder="[Enter name]" />
         </div>
@@ -95,48 +95,106 @@
             <i class="fas fa-cogs"></i>
         </div>
         <div class="popup" id="popup">
-            <button class="dropdown-btn" id="set-lang">Language
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-container">
-                <div class="english" id="english">
-                    <input type="radio" checked id="eng" value="english" name="language">
-                    <label for="eng" id="engText">English</label>
+            <div class="column">
+                <button class="dropdown-btn" id="set-lang">Language
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <div class="english" id="english">
+                        <input type="radio" checked id="eng" value="english" name="language">
+                        <label for="eng" id="engText">English</label>
+                    </div>
+                    <div class="russian" id="russian">
+                        <input type="radio" id="rus" value="russian" name="language">
+                        <label for="rus" id="rusText">Russian</label>
+                    </div>
                 </div>
-                <div class="russian" id="russian">
-                    <input type="radio" id="rus" value="russian" name="language">
-                    <label for="rus" id="rusText">Russian</label>
+
+                <button class="dropdown-btn" id="set-src">Slide source
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <div class="github" id="github">
+                        <input type="radio" checked id="gh" value="gh" name="imageSource">
+                        <label for="gh">GitHub</label>
+                    </div>
+                    <div class="unsplash" id="unsplash">
+                        <input type="radio" id="us" value="us" name="imageSource">
+                        <label for="us">Unsplash</label>
+                    </div>
+                    <input type="text" placeholder="Enter tags" id="unTags" class="unTags">
+                    <div class="flickr" id="flickr">
+                        <input type="radio" id="fl" value="fl" name="imageSource">
+                        <label for="fl">Flickr</label>
+                    </div>
+                    <input type="text" placeholder="Enter tags" id="flTags" class="flTags">
                 </div>
+            </div>
+            <div class="column">
+                <div class="switcher">
+                    <span id="timeOff">Time</span>
+                    <label class="switch" >
+                        <input type="checkbox" checked >
+                        <span class="slider round" onclick="toggContent('time')"></span>
+                    </label>
+                </div>
+
+                <div class="switcher">
+                    <span id="dateOff">Date</span>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round" onclick="toggContent('date')"></span>
+                    </label>
+                </div>
+                <div class="switcher">
+                    <span id="greetingOff">Greeting</span>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round" onclick="toggContent('greetingCont')"></span>
+                    </label>
+                </div>
+                <div class="switcher">
+                    <span id="quoteOff">Quote</span>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round" onclick="toggContent('quote')"></span>
+                    </label>
+                </div>
+                <div class="switcher">
+                    <span id="weatherOff">Weather</span>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round" onclick="toggContent('weather')"></span>
+                    </label>
+                </div>
+                <div class="switcher">
+                    <span id="playerOff">Player</span>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round" onclick="toggContent('player')"></span>
+                    </label>
+                </div>
+                <div class="switcher">
+                    <span id="todoOff">To-do</span>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round" onclick="toggContent('todo')"></span>
+                    </label>
+                </div>
+
             </div>
 
-            <button class="dropdown-btn" id="set-src">Slide source
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-container">
-                <div class="github" id="github">
-                    <input type="radio" checked id="gh" value="gh" name="imageSource">
-                    <label for="gh">GitHub</label>
-                </div>
-                <div class="unsplash" id="unsplash">
-                    <input type="radio" id="us" value="us" name="imageSource">
-                    <label for="us">Unsplash</label>
-                </div>
-                <input type="text" placeholder="Enter tags" id="unTags" class="unTags">
-                <div class="flickr" id="flickr">
-                    <input type="radio" id="fl" value="fl" name="imageSource">
-                    <label for="fl">Flickr</label>
-                </div>
-                <input type="text" placeholder="Enter tags" id="flTags" class="flTags">
-            </div>
         </div>
-        <div class="footer-quote">
+
+
+        <div class="footer-quote" id="quote">
             <button class="change-quote"></button>
             <div>
                 <div class="quote"></div>
                 <div class="author"></div>
             </div>
         </div>
-        <div class="todo-block">
+        <div class="todo-block" id="todo">
             <div class="todo-container" id="todoCont">
                 <form id="form">
                     <input id="input" type="text" placeholder="Add to-do...">
