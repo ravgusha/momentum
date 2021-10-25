@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="assets/favicon.ico" rel="shortcut icon" />
+    <link rel="stylesheet" href="css/owfont-regular.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>momentum</title>
+</head>
+
+<body id="body">
+    <header class="header">
+        <div class="player" id="player">
+            <audio id="myAudio" ontimeupdate="onTimeUpdate()">
+                <source id="source-audio" src="" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <div class="player-ctn">
+                <div class="infos-ctn">
+                    <div class="timer">00:00</div>
+                    <div class="title"></div>
+                    <div class="duration">00:00</div>
+                </div>
+                <div id="myProgress">
+                    <div id="myBar"></div>
+                </div>
+                <div class="btn-ctn">
+                    <div class="btn-action first-btn" onclick="previous()">
+                        <div id="btn-faws-back">
+                            <i class='fas fa-step-backward'></i>
+                        </div>
+                    </div>
+                    <div class="btn-action" onclick="rewind()">
+                        <div id="btn-faws-rewind">
+                            <i class='fas fa-backward'></i>
+                        </div>
+                    </div>
+                    <div class="btn-action" onclick="toggleAudio()">
+                        <div id="btn-faws-play-pause">
+                            <i class='fas fa-play' id="icon-play"></i>
+                            <i class='fas fa-pause' id="icon-pause" style="display: none"></i>
+                        </div>
+                    </div>
+                    <div class="btn-play" onclick="forward()">
+                        <div id="btn-faws-forward">
+                            <i class='fas fa-forward'></i>
+                        </div>
+                    </div>
+                    <div class="btn-action" onclick="next()">
+                        <div id="btn-faws-next">
+                            <i class='fas fa-step-forward'></i>
+                        </div>
+                    </div>
+                    <div class="volume">
+                        <div class="btn-mute" id="toggleMute" onclick="toggleMute()">
+                            <div id="btn-faws-volume">
+                                <i id="icon-vol-up" class='fas fa-volume-up'></i>
+                                <i id="icon-vol-mute" class='fas fa-volume-mute' style="display: none"></i>
+                            </div>
+                        </div>
+                        <input type="range" onchange="setVolume()" id='volumeRange' min=0 max=1 step=0.01 value='0.30'>
+                    </div>
+                </div>
+                <div class="playlist-ctn"></div>
+            </div>
+        </div>
+        <div class="weather" id="weather">
+            <input type="text" class="city" value="Minsk" />
+            <i class="weather-icon owf"></i>
+            <div class="weather-error"></div>
+            <div class="description-container">
+                <span class="temperature"></span>
+                <span class="weather-description"></span>
+            </div>
+            <div class="wind"></div>
+            <div class="humidity"></div>
+        </div>
+    </header>
+    <main class="main">
+        <div class="slider-icons">
+            <button class="slide-prev slider-icon"></button>
+            <button class="slide-next slider-icon"></button>
+        </div>
+        <time class="time" id="time"></time>
+        <date class="date" id="date"></date>
+        <div class="greeting-container" id="greetingCont">
+            <span class="greeting"></span>
+            <input type="text" class="name" id="userName" placeholder="[Enter name]" />
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="settings" id="settings">
+            <i class="fas fa-cogs"></i>
+        </div>
+        <div class="popup" id="popup">
+            <div class="column">
+                <button class="dropdown-btn" id="set-lang">Language
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <div class="english" id="english">
+                        <input type="radio" checked id="eng" value="english" name="language">
+                        <label for="eng" id="engText">English</label>
+                    </div>
+                    <div class="russian" id="russian">
+                        <input type="radio" id="rus" value="russian" name="language">
+                        <label for="rus" id="rusText">Russian</label>
+                    </div>
+                </div>
+
+                <button class="dropdown-btn" id="set-src">Slide source
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <div class="github" id="github">
+                        <input type="radio" checked id="gh" value="gh" name="imageSource">
+                        <label for="gh">GitHub</label>
+                    </div>
+                    <div class="unsplash" id="unsplash">
+                        <input type="radio" id="us" value="us" name="imageSource">
+                        <label for="us">Unsplash</label>
+                    </div>
+                    <input type="text" placeholder="Enter tags" id="unTags" class="unTags">
+                    <div class="flickr" id="flickr">
+                        <input type="radio" id="fl" value="fl" name="imageSource">
+                        <label for="fl">Flickr</label>
+                    </div>
+                    <input type="text" placeholder="Enter tags" id="flTags" class="flTags">
+                </div>
+            </div>
+            <div class="column">
+                <div class="switcher">
+                    <span id="timeOff">Time</span>
+                    <label class="switch" >
+                        <input type="checkbox" checked >
+                        <span class="slider round" onclick="toggContent('time')"></span>
+                    </label>
+                </div>
+
+                <div class="switcher">
+                    <span id="dateOff">Date</span>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round" onclick="toggContent('date')"></span>
+                    </label>
+                </div>
+                <div class="switcher">
+                    <span id="greetingOff">Greeting</span>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round" onclick="toggContent('greetingCont')"></span>
+                    </label>
+                </div>
+                <div class="switcher">
+                    <span id="quoteOff">Quote</span>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round" onclick="toggContent('quote')"></span>
+                    </label>
+                </div>
+                <div class="switcher">
+                    <span id="weatherOff">Weather</span>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round" onclick="toggContent('weather')"></span>
+                    </label>
+                </div>
+                <div class="switcher">
+                    <span id="playerOff">Player</span>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round" onclick="toggContent('player')"></span>
+                    </label>
+                </div>
+                <div class="switcher">
+                    <span id="todoOff">To-do</span>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round" onclick="toggContent('todo')"></span>
+                    </label>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-quote" id="quote">
+            <button class="change-quote"></button>
+            <div>
+                <div class="quote"></div>
+                <div class="author"></div>
+            </div>
+        </div>
+        <div class="todo-block" id="todo">
+            <div class="todo-container" id="todoCont">
+                <form id="form">
+                    <input id="input" type="text" placeholder="Add to-do...">
+                    <ul id="list-container">
+                    </ul>
+                </form>
+                <div class="text">Left click to done.<br>Right click to delete.</div>
+            </div>
+            <button class="todo" id="todo">To-do</button>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+    <script src="https://kit.fontawesome.com/a062562745.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
