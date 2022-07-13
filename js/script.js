@@ -197,7 +197,7 @@ function getBackground() {
         random = '0' + random;
     }
 
-    let url = 'https://github.com/ravgusha/momentum/tree/momentum/assets/img/' + timeOfDay + '/' + random + '.jpg';
+    let url = './assets/img/' + timeOfDay + '/' + random + '.jpg';
 
     const img = new Image();
     img.src = url;
@@ -223,14 +223,11 @@ async function getLinkToImageUn() {
 
 
     unTagsText = unTags.value;
-    console.log(unTagsText)
 
     const url = 'https://api.unsplash.com/photos/random?orientation=landscape&query=' + timeOfDay + ',' + unTagsText + '&&client_id=vGmkWjGIedfDnRn032W3tNs7jr__vE10V-mqkyE-0mQ';
-    console.log(url)
     const res = await fetch(url);
     const data = await res.json();
     const dataUrl = data.urls.regular;
-    console.log('url(' + dataUrl + ')');
 
     const img = new Image();
     img.src = dataUrl;
@@ -260,12 +257,9 @@ async function getLinkToImageFl() {
         url = 'https://www.flickr.com/services/rest/?method=flickr.galleries.getPhotos&api_key=5135b594508a0a929070451a97e1c491&gallery_id=72157720069530982&extras=url_h&format=json&nojsoncallback=1';
     }
 
-
-    console.log(url)
     const res = await fetch(url);
     const data = await res.json();
     const dataUrl = data.photos.photo[random].url_h;
-    console.log(dataUrl);
 
     const img = new Image();
     img.src = dataUrl;
@@ -288,11 +282,9 @@ async function getLinkToImageSearchFl() {
     url = 'https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=5135b594508a0a929070451a97e1c491&tags=' + timeOfDay + ',' + flTagsText + '&tag_mode=all&extras=url_l&format=json&nojsoncallback=1'
 
 
-    console.log(url)
     const res = await fetch(url);
     const data = await res.json();
     const dataUrl = data.photos.photo[random].url_l;
-    console.log(dataUrl);
 
     const img = new Image();
     img.src = dataUrl;
@@ -334,7 +326,7 @@ slideNext.addEventListener('click', () => {
     }
 
     if (imageSource == 'gh') {
-        let url = 'https://github.com/ravgusha/momentum/tree/momentum/assets/img/' + timeOfDay + '/' + random + '.jpg';
+        let url = './assets/img/' + timeOfDay + '/' + random + '.jpg';
         const img = new Image();
         img.src = url;
 
@@ -360,7 +352,7 @@ slidePrev.addEventListener('click', () => {
     }
 
     if (imageSource == 'gh') {
-        let url = 'github.com/ravgusha/momentum/tree/momentum/assets/img/' + timeOfDay + '/' + random + '.jpg';
+        let url = './assets/img/' + timeOfDay + '/' + random + '.jpg';
         const img = new Image();
         img.src = url;
 
@@ -390,8 +382,6 @@ function saveCity() {
 
 city.value = localStorage.getItem('city');
 
-// console.log(city.value)
-
 // GET WEATHER
 
 const weatherIcon = document.querySelector('.weather-icon');
@@ -409,7 +399,6 @@ async function getWeather(lang) {
     }
 
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=${language}&appid=88986004c8054ae5c4021fc0e275eb5f&units=metric`;
-    console.log(url)
 
     const res = await fetch(url);
     const data = await res.json();
@@ -451,10 +440,6 @@ let quoteBtn = document.querySelector('.change-quote');
 
 async function getQuotes() {
     let quotes;
-    // console.log(language)
-
-    // lang = language;
-    // console.log(lang)
 
     quotes = `../js/data/quotes-${language}.json`;
 
@@ -555,7 +540,6 @@ function getClickedElement(event) {
                 this.toggleAudio()
             } else {
                 loadNewTrack(clickedIndex);
-                console.log(clickedIndex);
             }
 
         }
@@ -771,21 +755,19 @@ for (i = 0; i < dropdown.length; i++) {
 
 function toggContent(content_id) {
     const x = document.getElementById(content_id);
-    console.log(x)
     x.classList.toggle('hide');
-    console.log(x.classList)
 }
 
 // SAVE SETTINGS AFTER REFRESH
 
-getElementById('russian').addEventListener('click', saveLang);
-getElementById('english').addEventListener('click', saveLang);
+document.getElementById('russian').addEventListener('click', saveLang);
+document.getElementById('english').addEventListener('click', saveLang);
 
 function saveLang() {
     localStorage.setItem('lang', getElementById('russian').checked);
 }
 
-getElementById('russian').checked = localStorage.getItem('lang');
+document.getElementById('russian').checked = localStorage.getItem('lang');
 
 
 // TO-DO
