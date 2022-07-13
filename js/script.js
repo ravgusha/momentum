@@ -197,7 +197,7 @@ function getBackground() {
         random = '0' + random;
     }
 
-    let url = 'https://github.com/ravgusha/stage1-tasks/blob/assets/images/' + timeOfDay + '/' + random + '.webp?raw=true';
+    let url = 'https://github.com/ravgusha/stage1-tasks/blob/assets/images/' + timeOfDay + '/' + random + '.jpg';
 
     const img = new Image();
     img.src = url;
