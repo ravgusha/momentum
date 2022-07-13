@@ -197,7 +197,7 @@ function getBackground() {
         random = '0' + random;
     }
 
-    let url = 'https://github.com/ravgusha/momentum/tree/momentum/assets/img' + timeOfDay + '/' + random + '.jpg';
+    let url = 'https://github.com/ravgusha/momentum/tree/momentum/assets/img/' + timeOfDay + '/' + random + '.jpg';
 
     const img = new Image();
     img.src = url;
@@ -334,7 +334,7 @@ slideNext.addEventListener('click', () => {
     }
 
     if (imageSource == 'gh') {
-        let url = 'https://github.com/ravgusha/momentum/tree/momentum/assets/img' + timeOfDay + '/' + random + '.jpg';
+        let url = 'https://github.com/ravgusha/momentum/tree/momentum/assets/img/' + timeOfDay + '/' + random + '.jpg';
         const img = new Image();
         img.src = url;
 
@@ -360,7 +360,7 @@ slidePrev.addEventListener('click', () => {
     }
 
     if (imageSource == 'gh') {
-        let url = 'github.com/ravgusha/momentum/tree/momentum/assets/img' + timeOfDay + '/' + random + '.jpg';
+        let url = 'github.com/ravgusha/momentum/tree/momentum/assets/img/' + timeOfDay + '/' + random + '.jpg';
         const img = new Image();
         img.src = url;
 
